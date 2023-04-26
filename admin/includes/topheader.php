@@ -31,7 +31,7 @@
 
                                 <ul class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                                     <li>
-                                        <h5>Ciao admin!</h5>
+                                        <h5>Ciao <?=$_SESSION['login']?></h5>
                                     </li>
                               
                                     <li><a href="change-password.php"><i class="ti-settings m-r-5"></i> Cambia password</a></li>

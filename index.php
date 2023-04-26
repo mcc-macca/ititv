@@ -51,7 +51,7 @@ include('includes/config.php');
         $total_pages = ceil($total_rows / $no_of_records_per_page);
 
 
-        $query = mysqli_query($con, "select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.Is_Active=1 order by tblposts.id desc  LIMIT $offset, $no_of_records_per_page");
+        $query = mysqli_query($con, "select tblposts.id as pid,tblposts.PostTitle as posttitle,tblposts.PostImage,tblposts.postedBy,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.Is_Active=1 order by tblposts.id desc  LIMIT $offset, $no_of_records_per_page");
         while ($row = mysqli_fetch_array($query)) {
         ?>
 
@@ -68,7 +68,7 @@ include('includes/config.php');
               <a href="news-details.php?nid=<?php echo htmlentities($row['pid']) ?>" class="btn btn-primary">Leggi &rarr;</a>
             </div>
             <div class="card-footer text-muted">
-              Postato il <?php echo htmlentities($row['postingdate']); ?>
+              Postato il <?php echo htmlentities($row['postingdate']); ?> da <?= htmlentities($row['postedBy']) ?>
 
             </div>
           </div>
