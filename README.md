@@ -16,6 +16,4 @@ QUALSIASI UTILIZZO IMPROPRIO E' A PESO DI CHI LO UTILIZZA.<br>
 MACCA COMPUTER SI ASTIENE DA QUALUNQUE RESPONSABILITA'.<br>
 
 # TODO
-Guardare anche TODO.md
-- [ ] Modificare lo stile
-- [ ] Sistemare login da parte di sotto-admin
+Guardare il file TODO.md
