@@ -2,6 +2,10 @@
 session_start();
 include('includes/config.php');
 require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 //Genrating CSRF Token
 if (empty($_SESSION['token'])) {
   $_SESSION['token'] = bin2hex(random_bytes(32));
@@ -23,6 +27,36 @@ if (isset($_POST['submit'])) {
       } else {
         echo "<script>alert('Errore!');</script>";
       }
+
+      // set variabili SMTP
+      //use PHPMailer\PHPMailer\PHPMailer;
+      $mail = new PHPMailer(true);
+      //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+      $mail->isSMTP();
+      $mail->SMTPDebug = 1;
+      $mail->SMTPAutoTLS = false;
+      $mail->SMTPSecure = false;
+      $mail->Host = 'smtp.maccacomputer.com';
+      $mail->SMTPAuth = true;
+      $mail->Username = 'g';
+      $mail->Password = 'g';
+      //$mail->SMTPSecure = 'tls';
+      $mail->Port = 25;
+
+      $mail->setFrom('contact@maccacomputer.com', 'Contatti - Macca Computer');
+      // aggiungi i destinatari
+      $destinatari = array(
+        'g' => 'Macca',
+        'lg' => 'Leonardo Salani'
+      );
+
+      foreach ($destinatari as $email => $nome) {
+        $mail->addAddress($email, $nome);
+      }
+
+      $mail->Subject = 'Nuovo commento su itiTV';
+      $mail->Body = "";
+      $mail->AltBody = "";
     }
   }
 }
