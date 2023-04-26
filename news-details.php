@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
       $mail->setFrom('contact@maccacomputer.com', 'Contatti - Macca Computer');
       // aggiungi i destinatari
       $destinatari = array(
-        'g' => 'Macca',
+        'g' => 'MaccaG',
         'lg' => 'Leonardo Salani'
       );
 
