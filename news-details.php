@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
+require 'vendor/autoload.php';
 //Genrating CSRF Token
 if (empty($_SESSION['token'])) {
   $_SESSION['token'] = bin2hex(random_bytes(32));
@@ -16,13 +17,12 @@ if (isset($_POST['submit'])) {
       $postid = intval($_GET['nid']);
       $st1 = '0';
       $query = mysqli_query($con, "insert into tblcomments(postId,name,email,comment,status) values('$postid','$name','$email','$comment','$st1')");
-      if ($query) :
+      if ($query) {
         echo "<script>alert('Commento inviato. Sarà pubblico dopo l'approvazione di un admin ');</script>";
         unset($_SESSION['token']);
-      else :
+      } else {
         echo "<script>alert('Errore!');</script>";
-
-      endif;
+      }
     }
   }
 }
