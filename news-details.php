@@ -15,9 +15,9 @@ if (isset($_POST['submit'])) {
   //Verifying CSRF Token
   if (!empty($_POST['csrftoken'])) {
     if (hash_equals($_SESSION['token'], $_POST['csrftoken'])) {
-      $name = $_POST['name'];
-      $email = $_POST['email'];
-      $comment = $_POST['comment'];
+      $name = mysqli_real_escape_string($con, $_POST['name']);
+      $email = mysqli_real_escape_string($con, $_POST['email']);
+      $comment = mysqli_real_escape_string($con, $_POST['comment']);
       $postid = intval($_GET['nid']);
       $st1 = '0';
       $query = mysqli_query($con, "insert into tblcomments(postId,name,email,comment,status) values('$postid','$name','$email','$comment','$st1')");
@@ -29,6 +29,12 @@ if (isset($_POST['submit'])) {
       }
 
       // set variabili SMTP
+
+      //lettura dati da database
+      $maildatacheck = $con->query("SELECT * FROM tblmail");
+      $destdatacheck = $con->query("SELECT * FROM tblmaildest");
+      $maildata = mysqli_fetch_assoc($maildatacheck);
+
       //use PHPMailer\PHPMailer\PHPMailer;
       $mail = new PHPMailer(true);
       //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
@@ -36,27 +42,34 @@ if (isset($_POST['submit'])) {
       $mail->SMTPDebug = 1;
       $mail->SMTPAutoTLS = false;
       $mail->SMTPSecure = false;
-      $mail->Host = 'smtp.maccacomputer.com';
+      $mail->Host = ''.$maildata['server'].'';
       $mail->SMTPAuth = true;
-      $mail->Username = 'g';
-      $mail->Password = 'g';
+      $mail->Username = ''.$maildata['emailSender'].'';
+      $mail->Password = ''.$maildata['emailPassword'].'';
       //$mail->SMTPSecure = 'tls';
       $mail->Port = 25;
 
-      $mail->setFrom('contact@maccacomputer.com', 'Contatti - Macca Computer');
+      $mail->setFrom(''.$maildata['setFromMailName'].'', ''.$maildata['setFromName'].'');
+      
       // aggiungi i destinatari
-      $destinatari = array(
-        'g' => 'MaccaG',
-        'lg' => 'Leonardo Salani'
-      );
-
-      foreach ($destinatari as $email => $nome) {
-        $mail->addAddress($email, $nome);
+      while($destdata = mysqli_fetch_assoc($destdatacheck)){
+        $mail->addAddress($destdata['email'], $destdata['name']);
       }
 
       $mail->Subject = 'Nuovo commento su itiTV';
-      $mail->Body = "";
-      $mail->AltBody = "";
+      $mail->Body = "Nuovo commento su itiTV.<br>
+                    Corri ad accettarlo!<br>
+                    Commentato da: $name <br>
+                    Email: $email <br>
+                    Il: ". date("Y-m-d H:i:s") ."<br>
+                    Testo: <br>
+                    <code>$comment</code>
+                    ";
+      $mail->AltBody = "TESTO PROVA.";
+
+      if (!$mail->send()) {
+        echo "ERRORE!";
+      }
     }
   }
 }
@@ -88,7 +101,7 @@ if ($result->num_rows > 0) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Notizie itiTV">
   <meta name="author" content="Macca Computer">
-  <title>Home | itiTV</title>
+  <title>News | itiTV</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/modern-business.css" rel="stylesheet">
 
@@ -189,7 +202,7 @@ if ($result->num_rows > 0) {
             <img class="d-flex mr-3 rounded-circle" src="images/usericon.png" alt="">
             <div class="media-body">
               <h5 class="mt-0"><?php echo htmlentities($row['name']); ?> <br />
-                <span style="font-size:11px;"><b>at</b> <?php echo htmlentities($row['postingDate']); ?></span>
+                <span style="font-size:11px;"><b>il</b> <?php echo htmlentities($row['postingDate']); ?></span>
               </h5>
 
               <?php echo htmlentities($row['comment']); ?>
