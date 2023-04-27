@@ -65,7 +65,7 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i> <span> Mail </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="setup-stmp.php">Setup STMP</a></li>
-                                    <li><a href="destinatari.php">Destinatari</a></li>
+                                    <li><a href="setup-dest.php">Destinatari</a></li>
                                 </ul>
                             </li>
 
