@@ -187,7 +187,7 @@ if (strlen($_SESSION['login']) == 0) {
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="card-box">
-                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Immagina (obbligatoria) [.jpg .jpeg .png .gif]</b></h4>
+                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Immagine (obbligatoria) [.jpg .jpeg .png .gif]</b></h4>
                                                         <input type="file" class="form-control" id="postimage" name="postimage" required>
                                                     </div>
                                                 </div>
