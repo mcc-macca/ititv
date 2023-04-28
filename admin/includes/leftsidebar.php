@@ -23,6 +23,7 @@
                                     <ul class="list-unstyled">
                                         <li><a href="setup-stmp.php">Setup STMP</a></li>
                                         <li><a href="setup-dest.php">Destinatari</a></li>
+                                        <li><a href="setup-mess.php">Messaggi</a></li>
                                     </ul>
                                 </li>
                             <?php endif; ?>

@@ -11,4 +11,4 @@
 - [X] Inviare una mail durante l'aggiunta di un commento (usare phpmailer)
 - [ ] Usare il sistema di password dimenticata con verifica email
 - [X] Aggiungiere credenziali mail nel database
-- [ ] Aggiungiere pagina gestione messaggi mail con la funzione. fare il switch(...)
+- [ ] Aggiungiere pagina gestione messaggi mail con la funzione.
