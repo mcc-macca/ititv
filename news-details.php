@@ -1,11 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
-require 'vendor/autoload.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
+require 'lib/function.php';
 //Genrating CSRF Token
 if (empty($_SESSION['token'])) {
   $_SESSION['token'] = bin2hex(random_bytes(32));
@@ -55,7 +51,7 @@ if ($result->num_rows > 0) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Notizie itiTV">
   <meta name="author" content="Macca Computer">
-  <title><?php echo htmlentities($row['posttitle']); ?> | itiTV</title>
+  <title>Visualizza notizia | itiTV</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/modern-business.css" rel="stylesheet">
 
@@ -71,7 +67,7 @@ if ($result->num_rows > 0) {
       <div class="col-md-8">
         <?php
         $pid = intval($_GET['nid']);
-        $currenturl = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];;
+        $currenturl = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];;
         $query = mysqli_query($con, "select tblposts.PostTitle as posttitle,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url,tblposts.postedBy,tblposts.lastUpdatedBy,tblposts.UpdationDate from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.id='$pid'");
         while ($row = mysqli_fetch_array($query)) {
         ?>

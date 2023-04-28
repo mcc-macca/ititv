@@ -81,7 +81,7 @@ include('includes/config.php');
 
 
         <ul class="pagination justify-content-center mb-4">
-          <li class="page-item"><a href="?pageno=1" class="page-link">Prima notizia</a></li>
+          <li class="page-item"><a href="?pageno=1" class="page-link">Prima pagina</a></li>
           <li class="<?php if ($pageno <= 1) {
                         echo 'disabled';
                       } ?> page-item">
@@ -89,7 +89,7 @@ include('includes/config.php');
                         echo '#';
                       } else {
                         echo "?pageno=" . ($pageno - 1);
-                      } ?>" class="page-link">Notizia precedente</a>
+                      } ?>" class="page-link">Pagina precedente</a>
           </li>
           <li class="<?php if ($pageno >= $total_pages) {
                         echo 'disabled';
@@ -98,9 +98,9 @@ include('includes/config.php');
                         echo '#';
                       } else {
                         echo "?pageno=" . ($pageno + 1);
-                      } ?> " class="page-link">Notizia successiva</a>
+                      } ?> " class="page-link">Pagina successiva</a>
           </li>
-          <li class="page-item"><a href="?pageno=<?php echo $total_pages; ?>" class="page-link">Ultima notizia</a></li>
+          <li class="page-item"><a href="?pageno=<?php echo $total_pages; ?>" class="page-link">Ultima pagina</a></li>
         </ul>
 
       </div>
