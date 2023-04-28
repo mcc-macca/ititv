@@ -18,6 +18,13 @@
                                         <li><a href="manage-subadmins.php">Gestisci admin secondari</a></li>
                                     </ul>
                                 </li>
+                                <li class="has_sub">
+                                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i> <span> Mail </span> <span class="menu-arrow"></span></a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="setup-stmp.php">Setup STMP</a></li>
+                                        <li><a href="setup-dest.php">Destinatari</a></li>
+                                    </ul>
+                                </li>
                             <?php endif; ?>
 
 
@@ -61,16 +68,6 @@
                                     <li><a href="manage-comments.php">Commenti approvati</a></li>
                                 </ul>
                             </li>
-                            <?php if ($_SESSION['utype'] == '1') : ?>
-                                <li class="has_sub">
-                                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i> <span> Mail </span> <span class="menu-arrow"></span></a>
-                                    <ul class="list-unstyled">
-                                        <li><a href="setup-stmp.php">Setup STMP</a></li>
-                                        <li><a href="setup-dest.php">Destinatari</a></li>
-                                    </ul>
-                                </li>
-                            <?php endif; ?>
-
                         </ul>
                     </div>
                     <!-- Sidebar -->
