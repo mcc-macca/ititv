@@ -33,11 +33,11 @@ else{
     </head>
 
 
-    <body class="fixed-left">
+    <body class="fixed-left bg-dark text-white">
         <div id="wrapper">
             <div class="topbar">
                 <div class="topbar-left">
-                    <a href="index.html" class="logo"><span>itiTV<span>Admin</span></span><i class="mdi mdi-layers"></i></a>
+                    <a href="index.php" class="logo"><span>itiTV<span>Admin</span></span><i class="mdi mdi-layers"></i></a>
                     <!-- Image logo -->
                     <!--<a href="index.html" class="logo">-->
                         <!--<span>-->
@@ -65,7 +65,7 @@ else{
                         <div class="row">
 							<div class="col-xs-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title">Dashboard</h4>
+                                    <h4 class="page-title text-white">Dashboard</h4>
                                     <ol class="breadcrumb p-0 m-0">
                                         <li>
                                             <a href="#">itiTV</a>
@@ -86,7 +86,7 @@ else{
                         <div class="row">
 <a href="manage-categories.php">
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="card-box widget-box-one">
+                                <div class="card-box widget-box-one bg-dark">
                                     <i class="mdi mdi-chart-areaspline widget-one-icon"></i>
                                     <div class="wigdet-one-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Categorie</p>
@@ -94,21 +94,21 @@ else{
 $countcat=mysqli_num_rows($query);
 ?>
 
-                                        <h2><?php echo htmlentities($countcat);?> <small></small></h2>
+                                        <h2 class="text-white"><?php echo htmlentities($countcat);?> <small></small></h2>
                                     
                                     </div>
                                 </div>
                             </div></a><!-- end col -->
 <a href="manage-subcategories.php">
                             <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="card-box widget-box-one">
+                                <div class="card-box widget-box-one bg-dark">
                                     <i class="mdi mdi-layers widget-one-icon"></i>
                                     <div class="wigdet-one-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="User This Month">Sottocategorie</p>
 <?php $query=mysqli_query($con,"select * from tblsubcategory where Is_Active=1");
 $countsubcat=mysqli_num_rows($query);
 ?>
-                                        <h2><?php echo htmlentities($countsubcat);?> <small></small></h2>
+                                        <h2 class="text-white"><?php echo htmlentities($countsubcat);?> <small></small></h2>
                               
                                     </div>
                                 </div>
@@ -117,14 +117,14 @@ $countsubcat=mysqli_num_rows($query);
 
      <a href="manage-posts.php">                       
         <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="card-box widget-box-one">
+                                <div class="card-box widget-box-one bg-dark">
                                     <i class="mdi mdi-layers widget-one-icon"></i>
                                     <div class="wigdet-one-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="User This Month">Notizie</p>
 <?php $query=mysqli_query($con,"select * from tblposts where Is_Active=1");
 $countposts=mysqli_num_rows($query);
 ?>
-                                        <h2><?php echo htmlentities($countposts);?> <small></small></h2>
+                                        <h2 class="text-white"><?php echo htmlentities($countposts);?> <small></small></h2>
                               
                                     </div>
                                 </div>
@@ -138,14 +138,14 @@ $countposts=mysqli_num_rows($query);
    <div class="row">
                     
       <a href="trash-posts.php"> <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="card-box widget-box-one">
+                                <div class="card-box widget-box-one bg-dark">
                                     <i class="mdi mdi-layers widget-one-icon"></i>
                                     <div class="wigdet-one-content">
                                         <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="User This Month">Notizie cestinate</p>
 <?php $query=mysqli_query($con,"select * from tblposts where Is_Active=0");
 $countposts=mysqli_num_rows($query);
 ?>
-                                        <h2><?php echo htmlentities($countposts);?> <small></small></h2>
+                                        <h2 class="text-white"><?php echo htmlentities($countposts);?> <small></small></h2>
                               
                                     </div>
                                 </div>

@@ -2,11 +2,13 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo"><span>iti<span>TV</span></span><i class="mdi mdi-layers"></i></a>
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/logo.png" alt="LOGO ITITV" width="100px">
+                    <i class="mdi mdi-layers"></i></a>
                 </div>
 
                 <!-- Button mobile view to collapse sidebar menu -->
-                <div class="navbar navbar-default" role="navigation">
+                <div class="navbar navbar-default bg-dark text-white" role="navigation">
                     <div class="container">
 
                         <!-- Navbar-left -->
@@ -21,7 +23,7 @@
                         </ul>
 
                         <!-- Right(Notification) -->
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right bg-dark text-white">
                           
 
                             <li class="dropdown user-box">
