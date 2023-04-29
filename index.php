@@ -54,7 +54,7 @@ include('includes/config.php');
         while ($row = mysqli_fetch_array($query)) {
         ?>
 
-          <div class="card mb-4">
+          <div class="card bg-dark text-white mb-4">
             <img class="card-img-top" src="admin/postimages/<?php echo htmlentities($row['PostImage']); ?>" alt="<?php echo htmlentities($row['posttitle']); ?>">
             <div class="card-body">
               <h2 class="card-title"><?php echo htmlentities($row['posttitle']); ?></h2>
@@ -80,26 +80,26 @@ include('includes/config.php');
 
 
         <ul class="pagination justify-content-center mb-4">
-          <li class="page-item"><a href="?pageno=1" class="page-link">Prima pagina</a></li>
+          <li class="page-item bg-dark text-white"><a href="?pageno=1" class="page-link bg-dark">Prima pagina</a></li>
           <li class="<?php if ($pageno <= 1) {
                         echo 'disabled';
-                      } ?> page-item">
+                      } ?> page-item bg-dark text-white">
             <a href="<?php if ($pageno <= 1) {
                         echo '#';
                       } else {
                         echo "?pageno=" . ($pageno - 1);
-                      } ?>" class="page-link">Pagina precedente</a>
+                      } ?>" class="page-link bg-dark">Pagina precedente</a>
           </li>
           <li class="<?php if ($pageno >= $total_pages) {
                         echo 'disabled';
-                      } ?> page-item">
+                      } ?> page-item bg-dark text-white">
             <a href="<?php if ($pageno >= $total_pages) {
                         echo '#';
                       } else {
                         echo "?pageno=" . ($pageno + 1);
-                      } ?> " class="page-link">Pagina successiva</a>
+                      } ?> " class="page-link bg-dark">Pagina successiva</a>
           </li>
-          <li class="page-item"><a href="?pageno=<?php echo $total_pages; ?>" class="page-link">Ultima pagina</a></li>
+          <li class="page-item bg-dark text-white"><a href="?pageno=<?php echo $total_pages; ?>" class="page-link bg-dark">Ultima pagina</a></li>
         </ul>
 
       </div>

@@ -40,7 +40,7 @@ if (isset($_POST['login'])) {
 </head>
 
 
-<body">
+<body class="bg-dark">
 
     <!-- HOME -->
     <section>

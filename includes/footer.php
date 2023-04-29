@@ -1,4 +1,4 @@
-    <footer class="py-5 bg-dark text-center white-text">
+    <footer class="py-5 text-center white-text">
       <div class="container white-text">
         <p>
           <h1>itiTV</h1>

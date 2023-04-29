@@ -1,13 +1,14 @@
 <?php
+require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 function mailCommenta($categoria, $name, $email, $comment)
 {
   include('../includes/config.php');
-  require '../vendor/autoload.php';
   // set variabili SMTP
   //lettura dati da database
+  $cattype = $con->real_escape_string($_GET['type']);
   $maildatacheck = $con->query("SELECT * FROM tblmail");
   $destdatacheck = $con->query("SELECT * FROM tblmaildest");
   $maildata = mysqli_fetch_assoc($maildatacheck);
@@ -33,9 +34,13 @@ function mailCommenta($categoria, $name, $email, $comment)
     $mail->addAddress('' . $destdata['email'] . '', '' . $destdata['name'] . '');
   }
 
+  $data_content = $con->query("SELECT * FROM tblmailmess WHERE id='$cattype'");
+  $datamess = $data_content->fetch_assoc();
 
-
-  $mail->Subject = 'Nuovo commento su itiTV';
+  $mail->Subject = ''.$datamess['subject'].'';
+  $mail->Body = "".$datamess['body']."";
+  $mail->AltBody = "".$datamess['altbody']."";
+  /*
   $mail->Body = "Nuovo commento su itiTV.<br>
                     Corri ad accettarlo!<br>
                     Commentato da: $name <br>
@@ -44,6 +49,7 @@ function mailCommenta($categoria, $name, $email, $comment)
                     Testo: <br>
                     <code>$comment</code>
                     ";
+  */
   $mail->AltBody = "TESTO PROVA.";
 
   if (!$mail->send()) {

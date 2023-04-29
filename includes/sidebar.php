@@ -1,7 +1,7 @@
   <div class="col-md-4">
 
     <!-- Search Widget -->
-    <div class="card mb-4">
+    <div class="card bg-dark text-white mb-4">
       <h5 class="card-header">Cerca</h5>
       <div class="card-body">
         <form name="search" action="search.php" method="post">
@@ -17,7 +17,7 @@
   </div>
 
   <!-- Categories Widget -->
-  <div class="card my-4">
+  <div class="card bg-dark text-white my-4">
     <h5 class="card-header">Categorie</h5>
     <div class="card-body">
       <div class="row">
@@ -39,7 +39,7 @@
   </div>
 
   <!-- Side Widget -->
-  <div class="card my-4">
+  <div class="card bg-dark text-white my-4">
     <h5 class="card-header">Ultime notizie</h5>
     <div class="card-body">
       <ul class="mb-0">
@@ -59,7 +59,7 @@
 
 
   <!-- Side Widget -->
-  <div class="card my-4">
+  <div class="card bg-dark text-white my-4">
     <h5 class="card-header">Notizie pi&ugrave; lette</h5>
     <div class="card-body">
       <ul>
