@@ -106,6 +106,37 @@ if (strlen($_SESSION['login']) == 0) {
                                 </div>
                             </div>
                         </div>
+                        <div class="table-responsive">
+                            <table class="table m-0 table-colored-bordered table-bordered-primary">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Email</th>
+                                        <th>Nome</th>
+                                        <th>Azioni</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $query = mysqli_query($con, "SELECT * FROM tblmaildest");
+                                    $cnt = 1;
+                                    while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+
+                                        <tr>
+                                            <th scope="row"><?php echo htmlentities($row['id']); ?></th>
+                                            <td><?php echo htmlentities($row['email']); ?></td>
+                                            <td><?php echo htmlentities($row['name']); ?></td>
+                                            <td><a href="edit-category.php?cid=<?php echo htmlentities($row['id']); ?>"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
+                                                &nbsp;<a href="manage-categories.php?rid=<?php echo htmlentities($row['id']); ?>&&action=del"> <i class="fa fa-trash-o" style="color: #f05050"></i></a> </td>
+                                        </tr>
+                                    <?php
+                                        $cnt++;
+                                    } ?>
+                                </tbody>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <?php include('includes/footer.php'); ?>

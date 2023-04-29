@@ -16,7 +16,6 @@ include('includes/config.php');
   <title>Home | itiTV</title>
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/modern-business.css" rel="stylesheet">
-
 </head>
 
 <body>
