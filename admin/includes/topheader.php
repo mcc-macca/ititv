@@ -2,8 +2,8 @@
 
                 <!-- LOGO -->
                 <div class="topbar-left">
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="LOGO ITITV" width="100px">
+                    <a href="dashboard.php" class="logo">
+                        <span><img src="assets/images/logo.png" alt="LOGO ITITV" width="100px"></span>
                     <i class="mdi mdi-layers"></i></a>
                 </div>
 
