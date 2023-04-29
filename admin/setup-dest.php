@@ -127,7 +127,7 @@ if (strlen($_SESSION['login']) == 0) {
                                             <th scope="row"><?php echo htmlentities($row['id']); ?></th>
                                             <td><?php echo htmlentities($row['email']); ?></td>
                                             <td><?php echo htmlentities($row['name']); ?></td>
-                                            <td><a href="edit-category.php?cid=<?php echo htmlentities($row['id']); ?>"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
+                                            <td><a href="edit-dest.php?cid=<?php echo htmlentities($row['id']); ?>"><i class="fa fa-pencil" style="color: #29b6f6;"></i></a>
                                                 &nbsp;<a href="manage-categories.php?rid=<?php echo htmlentities($row['id']); ?>&&action=del"> <i class="fa fa-trash-o" style="color: #f05050"></i></a> </td>
                                         </tr>
                                     <?php
