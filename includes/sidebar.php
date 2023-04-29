@@ -7,7 +7,7 @@
         <form name="search" action="search.php" method="post">
           <div class="input-group">
 
-            <input type="text" name="searchtitle" class="form-control" placeholder="Cerca notizie" required>
+            <input type="text" name="searchtitle" class="form-control bg-dark" placeholder="Cerca notizie" required style="border: 1px #19191f solid">
             <span class="input-group-btn">
               <button class="btn btn-primary" type="submit">Esegui ricerca</button>
             </span>

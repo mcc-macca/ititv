@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -55,4 +55,11 @@ function mailCommenta($categoria, $name, $email, $comment)
   if (!$mail->send()) {
     echo "ERRORE!";
   }
+}
+
+function versionCheck(){
+  $fileContents = file_get_contents("https://taiyoshitsu.altervista.org/api/mcns/mcns.json");
+  $data = json_decode($fileContents, true);
+  $versione = $data['mcns']['version'];
+  return $versione;
 }

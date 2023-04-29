@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
 
                     <div class="wrapper-page">
 
-                        <div class="m-t-40 account-pages">
+                        <div class="m-t-40 account-pages shadow-lg">
                             <div class="text-center account-logo-box">
                                 <h2 class="text-uppercase">
                                     <a href="index.html" class="text-success">

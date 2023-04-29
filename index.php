@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
+include('lib/function.php');
 
 ?>
 
@@ -54,7 +55,7 @@ include('includes/config.php');
         while ($row = mysqli_fetch_array($query)) {
         ?>
 
-          <div class="card bg-dark text-white mb-4">
+          <div class="card bg-dark border-dark text-white mb-4">
             <img class="card-img-top" src="admin/postimages/<?php echo htmlentities($row['PostImage']); ?>" alt="<?php echo htmlentities($row['posttitle']); ?>">
             <div class="card-body">
               <h2 class="card-title"><?php echo htmlentities($row['posttitle']); ?></h2>
@@ -88,7 +89,7 @@ include('includes/config.php');
                         echo '#';
                       } else {
                         echo "?pageno=" . ($pageno - 1);
-                      } ?>" class="page-link bg-dark">Pagina precedente</a>
+                      } ?>" class="page-link bg-dark" >Pagina precedente</a>
           </li>
           <li class="<?php if ($pageno >= $total_pages) {
                         echo 'disabled';
