@@ -1,5 +1,6 @@
 <?php
 include('includes/config.php');
+include('lib/function.php');
 
 ?>
 <!DOCTYPE html>
@@ -26,11 +27,11 @@ while($row=mysqli_fetch_array($query))
 {
 
 ?>
-      <h1 class="mt-4 mb-3"><?php echo htmlentities($row['PageTitle'])?>
+      <h1 class="mt-4 mb-3 text-white title-universal"><?php echo htmlentities($row['PageTitle'])?>
   
       </h1>
 
-      <ol class="breadcrumb">
+      <ol class="breadcrumb bg-dark">
         <li class="breadcrumb-item">
           <a href="index.php">Home</a>
         </li>
@@ -40,7 +41,7 @@ while($row=mysqli_fetch_array($query))
       <!-- Intro Content -->
       <div class="row">
 
-        <div class="col-lg-12">
+        <div class="col-lg-12 text-white">
 
           <p><?php echo $row['Description'];?></p>
         </div>

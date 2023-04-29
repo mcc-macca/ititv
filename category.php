@@ -2,6 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+include('lib/function.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,5 +1,6 @@
 <?php
 include('includes/config.php');
+include('lib/function.php');
 
 ?>
 <!DOCTYPE html>
