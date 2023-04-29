@@ -5,16 +5,15 @@ error_reporting(0);
 if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
 } else {
-    if (isset($_POST['sucatdescription'])) {
-        $subcatid = intval($_GET['scid']);
-        $categoryid = $_POST['category'];
-        $subcatname = $_POST['subcategory'];
-        $subcatdescription = $_POST['sucatdescription'];
-        $query = mysqli_query($con, "update tblsubcategory set CategoryId='$categoryid',Subcategory='$subcatname',SubCatDescription='$subcatdescription' where SubCategoryId='$subcatid'");
+    if (isset($_POST['submitdest'])) {
+        $destid = $con->real_escape_string($_GET['did']);
+        $email = $con->real_escape_string($_POST['emaildest']);
+        $name = $con->real_escape_string($_POST['namedest']);
+        $query = mysqli_query($con, "UPDATE tblmaildest SET email='$email', name='$name' WHERE id = '$destid'");
         if ($query) {
-            $msg = "Sub-Category created ";
+            $msg = "Destinatario modificato ";
         } else {
-            $error = "Something went wrong . Please try again.";
+            $error = "Errore, riprova!";
         }
     }
 
@@ -27,7 +26,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title>Aggiorna sottocategorie | itiTV</title>
+        <title>Modifica destinatario | itiTV</title>
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -117,7 +116,6 @@ if (strlen($_SESSION['login']) == 0) {
                                     //fetching Category details
                                     $subcatid = intval($_GET['scid']);
                                     $query = mysqli_query($con, "SELECT * FROM tblmaildest WHERE id='$destid'");
-                                    $cnt = 1;
                                     while ($row = mysqli_fetch_array($query)) {
 
                                     ?>
@@ -128,51 +126,24 @@ if (strlen($_SESSION['login']) == 0) {
                                             <div class="col-md-6">
                                                 <form class="form-horizontal" name="category" method="post">
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Categoria</label>
+                                                        <label class="col-md-2 control-label">Email</label>
                                                         <div class="col-md-10">
-                                                            <select class="form-control" name="category" required>
-                                                                <option value="<?php echo htmlentities($row['catid']); ?>"><?php echo htmlentities($row['catname']); ?></option>
-                                                                <?php
-                                                                // Feching active categories
-                                                                $ret = mysqli_query($con, "select id,CategoryName from  tblcategory where Is_Active=1");
-                                                                while ($result = mysqli_fetch_array($ret)) {
-                                                                ?>
-                                                                    <option value="<?php echo htmlentities($result['id']); ?>"><?php echo htmlentities($result['CategoryName']); ?></option>
-                                                                <?php } ?>
-
-                                                            </select>
+                                                        <input type="text" class="form-control" value="<?php echo htmlentities($row['email']); ?>" name="emaildest" required>
                                                         </div>
                                                     </div>
-
-
-
-
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">Sottocateogia</label>
+                                                        <label class="col-md-2 control-label">Nome</label>
                                                         <div class="col-md-10">
-                                                            <input type="text" class="form-control" value="<?php echo htmlentities($row['subcatname']); ?>" name="subcategory" required>
+                                                            <input type="text" class="form-control" value="<?php echo htmlentities($row['name']); ?>" name="namedest" required>
                                                         </div>
                                                     </div>
-
-
-
-
-
-
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 control-label">Descrizione sottocategoria</label>
-                                                        <div class="col-md-10">
-                                                            <textarea class="form-control" rows="5" name="sucatdescription" required><?php echo htmlentities($row['SubCatDescription']); ?></textarea>
-                                                        </div>
-                                                    </div>
-
                                                 <?php } ?>
 
                                                 <div class="form-group">
                                                     <label class="col-md-2 control-label">&nbsp;</label>
                                                     <div class="col-md-10">
 
-                                                        <button type="submit" class="btn btn-custom waves-effect waves-light btn-md" name="submitsubcat">
+                                                        <button type="submit" class="btn btn-custom waves-effect waves-light btn-md" name="submitdest">
                                                             Modifica
                                                         </button>
                                                     </div>
