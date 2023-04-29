@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header,
+.footer {
+    flex: 15;
+}
+
+.header {
+    background-color: #4286a7;
+    text-align: center;
+    align-items: center;
+}
+
+.main {
+    background-color: #1b2c49;
+    flex: 70;
+}
+
+.footer {
+    background-color: #4286a7;
+}
+
+.main,
+.footer {
+    padding: 0px 300px;
+    color: #f0f0f0;
+}
+
+.footer h1 {
+    display: inline-block;
+}
+
+#ore {
+    float: left;
+}
+
+#data {
+    float: right;
+}
