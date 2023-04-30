@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <div class="header loader_header">
             <img src="assets/images/logoiti.png" alt="LOGO ITI" width="200px">
         </div>
         <div class="main">

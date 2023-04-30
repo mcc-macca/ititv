@@ -58,7 +58,7 @@ function mailCommenta($categoria, $name, $email, $comment)
 }
 
 function versionCheck(){
-  $fileContents = file_get_contents("https://taiyoshitsu.altervista.org/api/mcns/mcns.json");
+  $fileContents = file_get_contents("ititv.json");
   $data = json_decode($fileContents, true);
   $versione = $data['mcns']['version'];
   return $versione;

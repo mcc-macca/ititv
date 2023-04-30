@@ -1,6 +1,7 @@
 {
-    "main": {
-        "version": "v0.0.1 BETA",
-        "url_update": "https://taiyoshitsu.altervista.org/api/mcns/mcns.json"
+    "mcns": {
+      "name": "Macca Conputer News System",
+      "description": "An open-source PHP news system",
+      "version": "v0.0.1 BETA"
     }
-}
+  }
