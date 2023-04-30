@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modalità TV - itiTV</title>
     <meta name="description" content="INDEX CARICAMENTO PAGINA itiTV">
+    <meta http-equiv="refresh" content="10; URL=news.php">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

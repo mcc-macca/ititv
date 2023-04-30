@@ -1,3 +1,8 @@
+html,
+body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -7,12 +12,13 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100% !important;
 }
 
 .header,
 .footer {
-    flex: 15;
+    height: 25% !important;
+    text-align: center;
 }
 
 .header {
@@ -23,16 +29,20 @@ body {
 
 .main {
     background-color: #1b2c49;
-    flex: 70;
+    text-align: center;
+    font-size: 28px;
+    height: 50% !important;
+
 }
 
 .footer {
     background-color: #4286a7;
+    padding: 0 10% 0 10%;
+    font-size: 38px;
 }
 
 .main,
 .footer {
-    padding: 0px 300px;
     color: #f0f0f0;
 }
 
@@ -46,4 +56,12 @@ body {
 
 #data {
     float: right;
+}
+
+.header img {
+    top: 50%;
+}
+
+.main img {
+    height: 200px;
 }
