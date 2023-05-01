@@ -12,3 +12,9 @@
 - [ ] Usare il sistema di password dimenticata con verifica email
 - [X] Aggiungiere credenziali mail nel database
 - [ ] Aggiungiere pagina gestione messaggi mail con la funzione.
+
+### Maggio 2023:
+###### Visualizzazione TV
+- [X] Orari segreteria APERTO CHIUSO Js
+- [ ] Sistemare div in news.php
+- [ ] Auto aggiornamento news.php quando si pubblica una nuova notizia. [AJAX]
