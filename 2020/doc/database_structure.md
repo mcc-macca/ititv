@@ -14,7 +14,7 @@ CREATE TABLE `comunicazioni` (
 
 ### Tabella degli eventi (Eventi tipo video covid) --> gestione_contenuti.php
 ``` sql
-REATE TABLE `eventi` (
+CREATE TABLE `eventi` (
   `ID_Evento` int NOT NULL AUTO_INCREMENT,
   `ID_Informazione` int NOT NULL,
   `Orario` varchar(50) NOT NULL,
