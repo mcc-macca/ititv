@@ -23,13 +23,13 @@ require '../admin/includes/config.php';
         <div class="main_news bg_dark">
             <div class="column inner">
                 <div class="box"> <!-- DIV PER DATA E ORA -->
-                    <h1 id="clock"></h1>
+                    <h1 id="clockdate"></h1>
                 </div>
                 <div class="box"> <!-- DIV PER ORARI SEGRETERIA -->
-                    <h1>ORARI SEGRETERIA:<br>
+                    <center><h1>ORARI SEGRETERIA:<br>
                         08:10 - 09:10<br>
                         11:45 - 13:10</h1>
-                    <h1 id="orario"></h1>
+                    <h1 id="orario"></h1></center>
                 </div>
             </div>
             <div class="column">
@@ -82,12 +82,14 @@ require '../admin/includes/config.php';
             </div>
         </div>
         <div class="footer_news">
-            <div class="ln">
-                <center><b>LIVE<br>NEWS</b></center>
+            <div class="red">
+                <h1>LIVE<br>NEWS</h1>
+            </div>
+            <div class="ticker marquee">
+                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit voluptatem nemo eaque? Consectetur suscipit nostrum libero provident odit perspiciatis harum nam, repudiandae illum animi, quod ducimus cumque neque voluptatem similique.</h1>
             </div>
         </div>
-    </div>
-    <script src="../lib/function.js"></script>
+        <script src="../lib/function.js"></script>
 </body>
 
 </html>
