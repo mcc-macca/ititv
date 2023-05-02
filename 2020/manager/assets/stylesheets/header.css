@@ -1,0 +1,30 @@
+/* Modifica intestazione */
+#header 
+{
+    text-align: center;
+}
+
+/* dimensione testo intestazione */
+#header h1 
+{
+    font-size: 4em; /* dimensione testo */
+    font-weight: bold; /* tipo di testo */
+    display: inline; /* visualizazione testo */
+}
+
+/* sottolineatura intestazione */
+#header hr
+{
+    width: 57em; /* lunghezza linea */
+    height: 0px; /* altezza linea */
+    border: 4px solid #FFFFFF; /* spessore, tipo e colore della linea */
+}
+
+/* immagine intestazione */
+#header img
+{
+    mix-blend-mode: lighten;
+    width: 11em; /* lunghezza immagine */
+    height: 6em; /* altezza immagine */
+    vertical-align: bottom; /* posizione dell'immagine */
+}

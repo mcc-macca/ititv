@@ -1,0 +1,18 @@
+#logout{
+    float: right;
+    margin-right: 8em;
+}
+
+#logout button{
+    mix-blend-mode: lighten;
+    padding: 0;
+    margin: 0;
+}
+
+#logout button img{
+    height: 5.5em
+}
+
+#logout button img:hover{
+    cursor: pointer;
+}
