@@ -26,35 +26,39 @@ require '../admin/includes/config.php';
                     <h1 id="clockdate"></h1>
                 </div>
                 <div class="box"> <!-- DIV PER ORARI SEGRETERIA -->
-                    <center><h1>ORARI SEGRETERIA:<br>
-                        08:10 - 09:10<br>
-                        11:45 - 13:10</h1>
-                    <h1 id="orario"></h1></center>
+                    <center>
+                        <h1>ORARI SEGRETERIA:<br>
+                            08:10 - 09:10<br>
+                            11:45 - 13:10</h1>
+                        <h1 id="orario"></h1>
+                    </center>
                 </div>
             </div>
             <div class="column">
-                <div class="box"> <!-- ULTIMA COMUNICAZIONE -->
-                    <?php
-                    $query_last = $con->query("SELECT * FROM tblposts ORDER BY id DESC LIMIT 1;");
-                    $last_res = $query_last->fetch_assoc();
-                    $id_last = $last_res['id'];
-                    $title_last = $last_res['PostTitle'];
-                    $content_last = $last_res['PostDetails'];
-                    ?>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th><?= $id_last ?></th>
-                                <th><?= $title_last ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="2"><?= $content_last ?></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="box" id="last-communication"> <!-- ULTIMA COMUNICAZIONE -->
                 </div>
+                <script>
+                    $(document).ready(function() {
+                        setInterval(function() {
+                            $.ajax({
+                                url: '/php/recupera_ultima_comunicazione.php',
+                                dataType: 'json',
+                                success: function(data) {
+                                    if (data) {
+                                        var id = data.id;
+                                        var title = data.title;
+                                        var content = data.content;
+                                        var lastCommunication = $('#last-communication');
+                                        lastCommunication.find('thead th').text(id);
+                                        lastCommunication.find('thead th').text(title);
+                                        lastCommunication.find('tbody td').text(content);
+                                    }
+                                }
+                            });
+                        }, 10000); // esegue la chiamata ogni 10 secondi
+                    });
+                </script>
+
             </div>
             <div class="column">
                 <div class="box"> <!-- PENULTIMA COMUNICAZIONE -->

@@ -96,7 +96,7 @@ body {
 
 .red {
     background-color: #ff0000;
-    width: 15% !important;
+    width: 15%;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -104,11 +104,11 @@ body {
 }
 
 .ln {
-    width: 10% !important;
+    width: 10%;
 }
 
 .bn {
-    width: 90% !important;
+    width: 90%;
 }
 
 .column {
