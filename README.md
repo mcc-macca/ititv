@@ -1,5 +1,7 @@
 # itiTV
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4cf0f08a7a74489abe571ec345972121)](https://app.codacy.com/gh/mcc-macca/ititv/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 itiTV è il giornalino scolastico elettronico dell'iti!
 
 ## Informazioni software
