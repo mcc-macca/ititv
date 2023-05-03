@@ -10,7 +10,8 @@ require '../admin/includes/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | itiTV</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <!--<script src="../vendor/jquery/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -35,30 +36,43 @@ require '../admin/includes/config.php';
                 </div>
             </div>
             <div class="column">
-                <div class="box" id="last-communication"> <!-- ULTIMA COMUNICAZIONE -->
-                </div>
                 <script>
                     $(document).ready(function() {
                         setInterval(function() {
                             $.ajax({
-                                url: '/php/recupera_ultima_comunicazione.php',
+                                url: 'php/recupera_ultima_comunicazione.php',
                                 dataType: 'json',
                                 success: function(data) {
                                     if (data) {
                                         var id = data.id;
-                                        var title = data.title;
-                                        var content = data.content;
+                                        var title = data.PostTitle;
+                                        var content = data.PostDetails;
                                         var lastCommunication = $('#last-communication');
-                                        lastCommunication.find('thead th').text(id);
-                                        lastCommunication.find('thead th').text(title);
-                                        lastCommunication.find('tbody td').text(content);
+                                        lastCommunication.find('table thead #id').text(id);
+                                        lastCommunication.find('table thead #title').text(title);
+                                        lastCommunication.find('table tbody #lastbody').html(content);
                                     }
                                 }
                             });
-                        }, 10000); // esegue la chiamata ogni 10 secondi
+                        }, 1000); // esegue la chiamata ogni 10 secondi
                     });
                 </script>
 
+                <div class="box" id="last-communication">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th id="id"></th>
+                                <th id="title" class="textcenter"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2" id="lastbody" class="textcenter"></td>
+                            </tr>
+                        </tbody>
+                    </table> <!-- ULTIMA COMUNICAZIONE -->
+                </div>
             </div>
             <div class="column">
                 <div class="box"> <!-- PENULTIMA COMUNICAZIONE -->
@@ -93,6 +107,7 @@ require '../admin/includes/config.php';
                 <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit voluptatem nemo eaque? Consectetur suscipit nostrum libero provident odit perspiciatis harum nam, repudiandae illum animi, quod ducimus cumque neque voluptatem similique.</h1>
             </div>
         </div>
+        <input type="hidden" id="clock">
         <script src="../lib/function.js"></script>
 </body>
 

@@ -166,3 +166,7 @@ table {
         left: -100%;
     }
 }
+
+.textcenter {
+    text-align: center;
+}
