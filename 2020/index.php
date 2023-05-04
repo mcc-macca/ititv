@@ -121,7 +121,7 @@
 
             #ora{
                 font-size: 7em;
-                font-family: 'Roboto', sans-serif;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
                 color: white;
                 text-align: center;
                 font-weight: bold;
@@ -144,12 +144,10 @@
 
             #data{
                 font-size: 5.5em;
-                font-family: 'Roboto', sans-serif;
-                color: #E18476;
+                font-family: Verdana;
+                color: #ffffff;
                 text-align: center;
                 font-weight: bold;
-                -webkit-text-stroke-width: 3px;
-                -webkit-text-stroke-color: #39434C; 
                 display: inline;
                 vertical-align: -30%;
             }
