@@ -19,8 +19,8 @@
 ###### Visualizzazione TV
 
 - [x] Orari segreteria APERTO CHIUSO Js
-- [ ] Sistemare div in news.php
-- [ ] Auto aggiornamento news.php quando si pubblica una nuova notizia. [AJAX]
+- [x] Sistemare div in news.php
+- [x] Auto aggiornamento news.php quando si pubblica una nuova notizia. [AJAX]
 - [ ] Mettere a posto questo codice:
 
 ```js
