@@ -54,7 +54,7 @@ require '../admin/includes/config.php';
                                     }
                                 }
                             });
-                        }, 1000); // esegue la chiamata ogni 10 secondi
+                        }, 10000); // esegue la chiamata ogni 10 secondi
                     });
                 </script>
 
