@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 body,
 html {
     margin-top: 0;
@@ -65,7 +67,7 @@ body {
     display: inline;
     color: #FF7746;
     font-size: 5.5em;
-    font-family: Verdana;
+    font-family: "Roboto";
     font-weight: bold;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     vertical-align: 120%;
@@ -102,7 +104,7 @@ body {
 
 #ora {
     font-size: 6em;
-    font-family: Verdana;
+    font-family: 'Roboto', sans-serif;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -113,7 +115,7 @@ body {
 
 #data {
     font-size: 5.5em;
-    font-family: Verdana;
+    font-family: 'Roboto', sans-serif;
     color: #E18476;
     text-align: center;
     font-weight: bold;
@@ -145,7 +147,7 @@ body {
 
 #infoSegreteria {
     font-size: 3.5em;
-    font-family: Verdana;
+    font-family: 'Roboto', sans-serif;
     color: #E18476;
     text-align: center;
     font-weight: bold;
@@ -155,7 +157,7 @@ body {
 
 #orarioUno {
     font-size: 3em;
-    font-family: Verdana;
+    font-family: 'Roboto', sans-serif;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -165,7 +167,7 @@ body {
 
 #info {
     font-size: 3.5em;
-    font-family: Verdana;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     font-weight: bold;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -218,7 +220,7 @@ body {
     color: white;
     font-size: 1.5em;
     font-weight: bold;
-    font-family: Verdana;
+    font-family: 'Roboto';
 }
 
 #barra {
@@ -226,8 +228,8 @@ body {
     margin-top: 0;
     width: 0.3%;
     height: 100%;
-    display: inline-block;
-    /*float: left;*/
+    /*display: inline-block;*/
+    float: left;
     background-color: white;
     border: 0;
 }
@@ -241,7 +243,7 @@ body {
     color: white;
     font-size: 1em;
     font-weight: bold;
-    font-family: Verdana;
+    font-family: 'Roboto';
 }
 
 #tcom,
@@ -256,7 +258,7 @@ body {
     color: white;
     font-size: 1.7em;
     font-weight: bold;
-    font-family: Verdana;
+    font-family: 'Roboto';
 }
 
 
@@ -283,8 +285,8 @@ body {
     margin-top: 0;
     width: 0.3%;
     height: 100%;
-    display: inline-block;
-    /*float: left;*/
+    /*display: inline-block;*/
+    float: left;
     background-color: white;
     border: 0;
 }
@@ -294,7 +296,7 @@ body {
     display: inline;
     color: white;
     font-size: 4em;
-    font-family: Verdana;
+    font-family: "Roboto";
     font-weight: bold;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke-width: 2px;
@@ -309,7 +311,7 @@ body {
     color: white;
     display: inline;
     font-size: 5em;
-    font-family: Verdana;
+    font-family: "Roboto";
     font-weight: bold;
 }
 
@@ -332,32 +334,34 @@ body {
     transform: translateX(100%);
     /* Apply animation to this element */
     /*-moz-animation: scroll-left 25s linear infinite;
--webkit-animation: scroll-left 25s linear infinite;
-animation: scroll-left 25s linear infinite;*/
+            -webkit-animation: scroll-left 25s linear infinite;
+            animation: scroll-left 25s linear infinite;*/
 }
 
 /* Move it (define the animation) */
 /*@-moz-keyframes scroll-left {
-0% { -moz-transform: translateX(113%); }
-100% { -moz-transform: translateX(-133%); }
-}
-@-webkit-keyframes scroll-left {
-0% { -webkit-transform: translateX(113%); }
-100% { -webkit-transform: translateX(-133%); }
-}
-@keyframes scroll-left {
-0% { 
--moz-transform: translateX(113%); /* Browser bug fix 
+        0% { -moz-transform: translateX(113%); }
+        100% { -moz-transform: translateX(-133%); }
+        }
+        @-webkit-keyframes scroll-left {
+        0% { -webkit-transform: translateX(113%); }
+        100% { -webkit-transform: translateX(-133%); }
+        }
+        @keyframes scroll-left {
+        0% { 
+        -moz-transform: translateX(113%); /* Browser bug fix 
 -webkit-transform: translateX(133%);
- Browser bug fix
+/* Browser bug fix 
 transform: translateX(113%);
 }
 
 100% {
     -moz-transform: translateX(-%);
-    /* Browser bug fix/
+    /* Browser bug fix *
     -webkit-transform: translateX(-133%);
-    /* Browser bug fix /
+    /* Browser bug fix *
     transform: translateX(-133%);
 }
+
+/
 }*/

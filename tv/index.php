@@ -83,7 +83,7 @@
 
 <body>
     <header class="header">
-        <img src="./assets/images/banner_mcXiti.png" id="logoITI">
+        <img src="./assets/image/banner_mcXiti.png" id="logoITI">
     </header>
 
     <main class="main">
