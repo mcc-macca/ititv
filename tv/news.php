@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>Comunicazioni</title>
     <!-- Favicon -->
@@ -15,31 +16,31 @@
             $("#data").text(new Date().toLocaleDateString());
             let actual = new Date();
 
-                let hours = actual.getHours();
-                let minutes = actual.getMinutes();
+            let hours = actual.getHours();
+            let minutes = actual.getMinutes();
 
-                switch (hours) {
-                    case 8:
+            switch (hours) {
+                case 8:
+                    $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
+                    break;
+                case 11:
+                    if (minutes >= 45)
                         $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                        break;
-                    case 11:
-                        if (minutes >= 45)
-                            $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                        else
-                            $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
-                        break;
-                    case 12:
-                        $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                        break;
-                    case 13:
-                        if (minutes <= 45)
-                            $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                        else
-                            $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
-                        break;
-                    default:
+                    else
                         $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
-                }
+                    break;
+                case 12:
+                    $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
+                    break;
+                case 13:
+                    if (minutes <= 45)
+                        $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
+                    else
+                        $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
+                    break;
+                default:
+                    $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
+            }
             setInterval(() => {
                 $("#ora").text(new Date().toLocaleTimeString('it-IT', {
                     hour: "numeric",
@@ -86,76 +87,76 @@
                 }
             }, 1000);
 
-            function getCommm(){
+            function getCommm() {
                 $.get("assets/php/getComunicazioni.php")
-                .done(function(risultati) {
-                    let dati;
+                    .done(function(risultati) {
+                        let dati;
 
-                    try {
-                        dati = JSON.parse(risultati);
-                    } catch (error) {
-                        dati = JSON.parse("[]");
-                    }
-
-                    let i = 0;
-                    let comunicazioni = dati.filter((comunicazione) => {
-                        if (comunicazione[3] != "News") {
-                            return comunicazione
+                        try {
+                            dati = JSON.parse(risultati);
+                        } catch (error) {
+                            dati = JSON.parse("[]");
                         }
-                    });
 
-                    if(comunicazioni.length == 0){
-                        $("#n_com").children().text('0');
-                        $("#titolo_com").children().text('Nessuna comunicazione');
-                        $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
-
-                        $("#n_com2").children().text('0');
-                        $("#titolo_com2").children().text('Nessuna comunicazione');
-                        $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
-
-                        return 0;
-                    }
-
-                    function communicazioni(){
-                        if (comunicazioni[i]) {
-                            $("#n_com").children().text(comunicazioni[i][0]);
-                            $("#titolo_com").children().text(comunicazioni[i][1]);
-                            $("#tcom").children().text(comunicazioni[i][2]);
-
-                            if(!comunicazioni[i + 1]){
-                                $("#n_com2").children().text(comunicazioni[0][0]);
-                                $("#titolo_com2").children().text(comunicazioni[0][1]);
-                                $("#tcom2").children().text(comunicazioni[0][2]);
-                            }else{
-                                $("#n_com2").children().text(comunicazioni[i + 1][0]);
-                                $("#titolo_com2").children().text(comunicazioni[i + 1][1]);
-                                $("#tcom2").children().text(comunicazioni[i + 1][2]);
+                        let i = 0;
+                        let comunicazioni = dati.filter((comunicazione) => {
+                            if (comunicazione[3] != "News") {
+                                return comunicazione
                             }
-                            
+                        });
 
-                            i++;
-                            if (i == comunicazioni.length - 1) {
-                                i = 0;
+                        if (comunicazioni.length == 0) {
+                            $("#n_com").children().text('0');
+                            $("#titolo_com").children().text('Nessuna comunicazione');
+                            $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
+
+                            $("#n_com2").children().text('0');
+                            $("#titolo_com2").children().text('Nessuna comunicazione');
+                            $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
+
+                            return 0;
+                        }
+
+                        function communicazioni() {
+                            if (comunicazioni[i]) {
+                                $("#n_com").children().text(comunicazioni[i][0]);
+                                $("#titolo_com").children().text(comunicazioni[i][1]);
+                                $("#tcom").children().text(comunicazioni[i][2]);
+
+                                if (!comunicazioni[i + 1]) {
+                                    $("#n_com2").children().text(comunicazioni[0][0]);
+                                    $("#titolo_com2").children().text(comunicazioni[0][1]);
+                                    $("#tcom2").children().text(comunicazioni[0][2]);
+                                } else {
+                                    $("#n_com2").children().text(comunicazioni[i + 1][0]);
+                                    $("#titolo_com2").children().text(comunicazioni[i + 1][1]);
+                                    $("#tcom2").children().text(comunicazioni[i + 1][2]);
+                                }
+
+
+                                i++;
+                                if (i == comunicazioni.length - 1) {
+                                    i = 0;
+                                }
                             }
                         }
-                    }
 
-                    communicazioni();
-                    setInterval(() => {
                         communicazioni();
-                    }, 5*60*1000);
+                        setInterval(() => {
+                            communicazioni();
+                        }, 5 * 60 * 1000);
 
 
-                });
+                    });
             }
 
             getCommm();
             setInterval(() => {
                 getCommm();
-            }, 30*60*1000);
-            
+            }, 30 * 60 * 1000);
 
-            function getEventtt(){
+
+            function getEventtt() {
                 $.get("assets/php/getEventiAggiuntivi.php")
                     .done(function(risultati) {
                         let dati;
@@ -165,7 +166,7 @@
                         } catch (error) {
                             dati = JSON.parse("[]");
                         }
-                        
+
 
                         let j = 0;
 
@@ -175,22 +176,23 @@
                             }
                         });
 
-                        if(news.length == 0){
+                        if (news.length == 0) {
                             $("#notizia").children().text("NESSUNA LIVE NEWS DA MOSTRARE!");
                             $("#notizia").marquee({
-                                    delayBeforeStart: 10,
-                                    allowCss3Support: true,
-                                    duplicated: true,
-                                    pauseOnCycle: false,
-                                    pauseOnHover: false,
-                                    startVisible: true,
-                                    gap: 1500
-                                });
+                                delayBeforeStart: 10,
+                                allowCss3Support: true,
+                                duplicated: true,
+                                pauseOnCycle: false,
+                                pauseOnHover: false,
+                                startVisible: true,
+                                gap: 1500
+                            });
                             return 0;
                         }
 
                         var lastmarquee = $("#notizia").marquee();
-                        function newscgange(){
+
+                        function newscgange() {
                             lastmarquee.marquee('destroy');
                             if (news[j]) {
                                 $("#notizia").children().text(news[j][2])
@@ -213,7 +215,7 @@
                         newscgange();
                         setInterval(() => {
                             newscgange();
-                        }, 30*1000);
+                        }, 30 * 1000);
 
                     });
             }
@@ -221,15 +223,58 @@
             getEventtt();
             setInterval(() => {
                 getEventtt();
-            }, 5*60*1000);
-               
-            
+            }, 5 * 60 * 1000);
 
 
-            setTimeout(() => {
+
+
+            /*setTimeout(() => {
                 window.location.replace("tmpvideo.php");
-            }, 1000*60);
+            }, 1000*60);*/
         });
+
+        var currentTime = new Date();
+        var currentHour = currentTime.getHours();
+        var currentMinute = currentTime.getMinutes();
+
+        var openingHours = ["08:10", "11:45"];
+        var closingHours = ["09:10", "13:10"];
+
+        var isOpen = false;
+
+        for (var i = 0; i < openingHours.length; i++) {
+            var openingTime = openingHours[i].split(":");
+            var openingHour = parseInt(openingTime[0]);
+            var openingMinute = parseInt(openingTime[1]);
+            var openingTotalMinutes = openingHour * 60 + openingMinute;
+
+            var closingTime = closingHours[i].split(":");
+            var closingHour = parseInt(closingTime[0]);
+            var closingMinute = parseInt(closingTime[1]);
+            var closingTotalMinutes = closingHour * 60 + closingMinute;
+
+            if (closingTotalMinutes < openingTotalMinutes) {
+                closingTotalMinutes += 24 * 60; // aggiunge un giorno in minuti
+            }
+
+            var currentTotalMinutes = currentHour * 60 + currentMinute;
+
+            if (
+                currentTotalMinutes >= openingTotalMinutes &&
+                currentTotalMinutes <= closingTotalMinutes
+            ) {
+                isOpen = true;
+                break;
+            }
+        }
+
+        if (isOpen) {
+            document.getElementById("orario").innerHTML = "--APERTA--";
+            document.getElementById("orario").style.color = "lime";
+        } else {
+            document.getElementById("orario").innerHTML = "--CHIUSA--";
+            document.getElementById("orario").style.color = "red";
+        }
     </script>
 
 </head>
@@ -242,7 +287,7 @@
         <hr id="separatoreVerticale">
         <h1 id="titoloPagina">COMUNICAZIONI GIORNALIERE</h1>
         <hr id="separatoreVerticale">
-        <img id ="logoITITV" src="assets/image/logoititv.png">
+        <img id="logoITITV" src="assets/image/logoititv.png">
     </header>
 
     <!-- MAIN -->
@@ -263,35 +308,47 @@
                 <h4 id="orarioUno">Dalle 08:00 alle 09:00</h4>
                 <h4 id="orarioUno">Dalle 11:45 alle 13:45</h4>
                 <br><br>
-                <h4 id="info"></h4>
+                <h4 id="orario"></h4>
             </div>
         </div>
 
         <!-- DIV PRIMA COMUNICAZIONE -->
         <div id="com1">
             <div id="header_com">
-                <span id="n_com"><h1>9999</h1></span>
+                <span id="n_com">
+                    <h1>9999</h1>
+                </span>
                 <hr id="barra">
                 <br>
-                <span id="titolo_com"><h1>COMUNICAZIONE 1</h1></span>
+                <span id="titolo_com">
+                    <h1>COMUNICAZIONE 1</h1>
+                </span>
                 <br>
-                <span id="tcom"><p>asiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB</p></span>
+                <span id="tcom">
+                    <p>asiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB</p>
+                </span>
             </div>
         </div>
 
         <!-- DIV SECONDA COMUNICAZIONE -->
         <div id="com2">
             <div id="header_com">
-                <span id="n_com2"><h1>002</h1></span>
+                <span id="n_com2">
+                    <h1>002</h1>
+                </span>
                 <hr id="barra">
                 <br>
-                <span id="titolo_com2"><h1>COMUNICAZIONE 2</h1></span>
+                <span id="titolo_com2">
+                    <h1>COMUNICAZIONE 2</h1>
+                </span>
                 <br>
-                <span id="tcom2"><p>asiysdbaoWUIYHDFBUOIA SHFBCUASEGVBFUIWEGVFBUOEASVBUO ufabseuoiafbaewufbewufbweub</p></span>
+                <span id="tcom2">
+                    <p>asiysdbaoWUIYHDFBUOIA SHFBCUASEGVBFUIWEGVFBUOEASVBUO ufabseuoiafbaewufbewufbweub</p>
+                </span>
             </div>
-        </div> 
+        </div>
 
-    </main>    
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -301,9 +358,12 @@
         </div>
         <hr id="sep_footer">
         <div class="scroll-left">
-            <h1 id="notizia"><nobr>ABCDEFGHIJKLMNOPQRSTUVWXYZ</nobr></h1>
+            <h1 id="notizia">
+                <nobr>ABCDEFGHIJKLMNOPQRSTUVWXYZ</nobr>
+            </h1>
         </div>
     </footer>
 
 </body>
+
 </html>
