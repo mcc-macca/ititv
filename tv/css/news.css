@@ -1,0 +1,363 @@
+body,
+html {
+    margin-top: 0;
+    margin-left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    cursor: no-drop;
+}
+
+body {
+    background-color: #168AAD;
+    text-align: center;
+}
+
+::selection {
+    background: none;
+    /* background della selezione */
+    color: none;
+}
+
+::-moz-selection {
+    background: none;
+    /* background della selezione */
+    color: none;
+    /* colore del testo della selezione */
+}
+
+.page {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    pointer-events: none;
+    margin: auto;
+}
+
+/*---------------   HEADER   ---------------*/
+.header {
+    position: relative;
+    margin-left: 0;
+    width: 100%;
+    height: 15%;
+    background: #102c4c;
+}
+
+#logoITI {
+    height: 10em;
+    position: relative;
+    display: inline-block;
+    vertical-align: 500%;
+}
+
+#separatoreVerticale {
+    position: relative;
+    vertical-align: 530%;
+    width: 0.5%;
+    height: 80%;
+    display: inline-block;
+    background-color: white;
+    border: 0;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#titoloPagina {
+    display: inline;
+    color: #FF7746;
+    font-size: 5.5em;
+    font-family: Verdana;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    vertical-align: 120%;
+}
+
+#logoITITV {
+    position: relative;
+    height: 9em;
+    mix-blend-mode: lighten;
+    display: inline-block;
+    vertical-align: 520%;
+}
+
+
+
+/*---------------   MAIN   ---------------*/
+.main {
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+    height: 70%;
+    background-color: #168AAD;
+    text-align: center;
+}
+
+#data_seg_container {
+    position: relative;
+    float: left;
+    margin-top: 3%;
+    margin-left: 2.6%;
+    width: 30%;
+    height: 88.2%;
+}
+
+#ora {
+    font-size: 6em;
+    font-family: Verdana;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    vertical-align: 30%;
+}
+
+#data {
+    font-size: 5.5em;
+    font-family: Verdana;
+    color: #E18476;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #39434C;
+    display: inline;
+    vertical-align: -30%;
+}
+
+#date {
+    position: relative;
+    width: 99%;
+    height: 40%;
+    background: #1B5583;
+    border: 0.2rem solid white;
+    text-align: center;
+}
+
+#info_seg {
+    position: relative;
+    width: 99%;
+    height: 53.3%;
+    margin-top: 3%;
+    background: #1B5583;
+    border: 0.2rem solid white;
+    text-align: center;
+}
+
+#infoSegreteria {
+    font-size: 3.5em;
+    font-family: Verdana;
+    color: #E18476;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+}
+
+#orarioUno {
+    font-size: 3em;
+    font-family: Verdana;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+}
+
+#info {
+    font-size: 3.5em;
+    font-family: Verdana;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+}
+
+#com1 {
+    position: relative;
+    float: left;
+    margin-top: 3%;
+    margin-left: 2.6%;
+    width: 30%;
+    height: 85.3%;
+    background: #1B5583;
+    border: 0.2rem solid white;
+    overflow: hidden;
+}
+
+#com2 {
+    position: relative;
+    float: left;
+    margin-top: 3%;
+    margin-right: 2.6%;
+    margin-left: 1.2%;
+    width: 30%;
+    height: 85.3%;
+    background: #1B5583;
+    border: 0.2rem solid white;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+#header_com {
+    position: relative;
+    width: 100%;
+    height: 20%;
+    background: #102C54;
+    text-align: center;
+    border: 0.1rem solid white;
+    border-collapse: collapse;
+}
+
+#n_com,
+#n_com2 {
+    position: relative;
+    float: left;
+    width: 23%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+#barra {
+    position: relative;
+    margin-top: 0;
+    width: 0.3%;
+    height: 100%;
+    display: inline-block;
+    /*float: left;*/
+    background-color: white;
+    border: 0;
+}
+
+#titolo_com,
+#titolo_com2 {
+    position: relative;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+#tcom,
+#tcom2 {
+    position: relative;
+    float: left;
+    margin: auto;
+    width: 100%;
+    height: 80%;
+    max-height: 80%;
+    text-align: center;
+    color: white;
+    font-size: 1.7em;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+
+/*---------------   FOOTER   ---------------*/
+.footer {
+    margin-left: 0;
+    width: 100%;
+    height: 15%;
+    position: relative;
+    text-align: center;
+    background: #102c4c;
+}
+
+#live_news {
+    position: relative;
+    background: #FF6B35;
+    float: left;
+    width: 12%;
+    height: 100%;
+}
+
+#sep_footer {
+    position: relative;
+    margin-top: 0;
+    width: 0.3%;
+    height: 100%;
+    display: inline-block;
+    /*float: left;*/
+    background-color: white;
+    border: 0;
+}
+
+#LN {
+    position: relative;
+    display: inline;
+    color: white;
+    font-size: 4em;
+    font-family: Verdana;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    line-height: 67px;
+}
+
+#notizia {
+    position: relative;
+    float: left;
+    width: 87.7%;
+    color: white;
+    display: inline;
+    font-size: 5em;
+    font-family: Verdana;
+    font-weight: bold;
+}
+
+.scroll-left {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scroll-left h1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: 3%;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    /* Apply animation to this element */
+    /*-moz-animation: scroll-left 25s linear infinite;
+-webkit-animation: scroll-left 25s linear infinite;
+animation: scroll-left 25s linear infinite;*/
+}
+
+/* Move it (define the animation) */
+/*@-moz-keyframes scroll-left {
+0% { -moz-transform: translateX(113%); }
+100% { -moz-transform: translateX(-133%); }
+}
+@-webkit-keyframes scroll-left {
+0% { -webkit-transform: translateX(113%); }
+100% { -webkit-transform: translateX(-133%); }
+}
+@keyframes scroll-left {
+0% { 
+-moz-transform: translateX(113%); /* Browser bug fix 
+-webkit-transform: translateX(133%);
+ Browser bug fix
+transform: translateX(113%);
+}
+
+100% {
+    -moz-transform: translateX(-%);
+    /* Browser bug fix/
+    -webkit-transform: translateX(-133%);
+    /* Browser bug fix /
+    transform: translateX(-133%);
+}
+}*/

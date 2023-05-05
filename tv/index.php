@@ -69,7 +69,7 @@
             dataEora();
 
             setTimeout(() => {
-                window.location.replace("comunicazioni.php");
+                window.location.replace("news.php");
             }, 1000 * 30);
 
         });
