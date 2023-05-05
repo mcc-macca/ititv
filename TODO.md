@@ -2,7 +2,7 @@
 
 ### Aprile 2023:
 
-- [ ] Cambiare stile
+- [x] Cambiare stile
 - [x] Sistemare aggiunta sub-admin
 - [x] Sistemare portale accesso (SQL)
 - [ ] Sistemare codice cambio password
