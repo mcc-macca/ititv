@@ -27,7 +27,7 @@
             }
 
             function _0x22c2() {
-                var _0x4f786e = ['1162794jobvOW', '7495506Vgpyod', '52297hvfsKU', '3387GmsyOh', '2944LeMByJ', '10902JgZeEg', '74cuHfLa', '1802100ufNkPQ', 'Creazione\x20di\x20Diego\x20Bonati\x20e\x20Luca\x20Corticelli.', '5vMMVCj', '30865362bzFreL', '856eGjsmu'];
+                var _0x4f786e = ['1162794jobvOW', '7495506Vgpyod', '52297hvfsKU', '3387GmsyOh', '2944LeMByJ', '10902JgZeEg', '74cuHfLa', '1802100ufNkPQ', 'Creazione\x20di\x20Diego\x20Bonati\x20e\x20Luca\x20Corticelli.\nMACCA\x20COMPUTER\x20\x20(C)\x202018\x20-\x202023', '5vMMVCj', '30865362bzFreL', '856eGjsmu'];
                 _0x22c2 = function() {
                     return _0x4f786e;
                 };
@@ -68,9 +68,9 @@
 
             dataEora();
 
-            /*setTimeout(() => {
-                window.location.replace("comunicazioni.php");   -> DECOMMENTARE !!!!
-            }, 1000 * 30);*/
+            setTimeout(() => {
+                window.location.replace("comunicazioni.php");
+            }, 1000 * 30);
 
         });
     </script>
