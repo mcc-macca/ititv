@@ -11,12 +11,41 @@
     </script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
 
 
             // Non toccare per il funzionamento corretto di JQuery e soluzione bug della libreria per la gestione degli orari e delle date
-            var _0x58fba7=_0xac1b;function _0xac1b(_0x1f967a,_0x3c2de0){var _0x22c205=_0x22c2();return _0xac1b=function(_0xac1bbe,_0x1b4b8a){_0xac1bbe=_0xac1bbe-0x173;var _0x5d8978=_0x22c205[_0xac1bbe];return _0x5d8978;},_0xac1b(_0x1f967a,_0x3c2de0);}function _0x22c2(){var _0x4f786e=['1162794jobvOW','7495506Vgpyod','52297hvfsKU','3387GmsyOh','2944LeMByJ','10902JgZeEg','74cuHfLa','1802100ufNkPQ','Creazione\x20di\x20Diego\x20Bonati\x20e\x20Luca\x20Corticelli.','5vMMVCj','30865362bzFreL','856eGjsmu'];_0x22c2=function(){return _0x4f786e;};return _0x22c2();}(function(_0x115ab2,_0x22d446){var _0x96170=_0xac1b,_0x5392eb=_0x115ab2();while(!![]){try{var _0x10c756=parseInt(_0x96170(0x17a))/0x1*(parseInt(_0x96170(0x179))/0x2)+parseInt(_0x96170(0x177))/0x3*(parseInt(_0x96170(0x178))/0x4)+-parseInt(_0x96170(0x17d))/0x5*(-parseInt(_0x96170(0x174))/0x6)+parseInt(_0x96170(0x176))/0x7*(parseInt(_0x96170(0x173))/0x8)+parseInt(_0x96170(0x175))/0x9+parseInt(_0x96170(0x17b))/0xa+-parseInt(_0x96170(0x17e))/0xb;if(_0x10c756===_0x22d446)break;else _0x5392eb['push'](_0x5392eb['shift']());}catch(_0x2283e9){_0x5392eb['push'](_0x5392eb['shift']());}}}(_0x22c2,0x6a1b8),console['log'](_0x58fba7(0x17c)));
-            
+            var _0x58fba7 = _0xac1b;
+
+            function _0xac1b(_0x1f967a, _0x3c2de0) {
+                var _0x22c205 = _0x22c2();
+                return _0xac1b = function(_0xac1bbe, _0x1b4b8a) {
+                    _0xac1bbe = _0xac1bbe - 0x173;
+                    var _0x5d8978 = _0x22c205[_0xac1bbe];
+                    return _0x5d8978;
+                }, _0xac1b(_0x1f967a, _0x3c2de0);
+            }
+
+            function _0x22c2() {
+                var _0x4f786e = ['1162794jobvOW', '7495506Vgpyod', '52297hvfsKU', '3387GmsyOh', '2944LeMByJ', '10902JgZeEg', '74cuHfLa', '1802100ufNkPQ', 'Creazione\x20di\x20Diego\x20Bonati\x20e\x20Luca\x20Corticelli.', '5vMMVCj', '30865362bzFreL', '856eGjsmu'];
+                _0x22c2 = function() {
+                    return _0x4f786e;
+                };
+                return _0x22c2();
+            }(function(_0x115ab2, _0x22d446) {
+                var _0x96170 = _0xac1b,
+                    _0x5392eb = _0x115ab2();
+                while (!![]) {
+                    try {
+                        var _0x10c756 = parseInt(_0x96170(0x17a)) / 0x1 * (parseInt(_0x96170(0x179)) / 0x2) + parseInt(_0x96170(0x177)) / 0x3 * (parseInt(_0x96170(0x178)) / 0x4) + -parseInt(_0x96170(0x17d)) / 0x5 * (-parseInt(_0x96170(0x174)) / 0x6) + parseInt(_0x96170(0x176)) / 0x7 * (parseInt(_0x96170(0x173)) / 0x8) + parseInt(_0x96170(0x175)) / 0x9 + parseInt(_0x96170(0x17b)) / 0xa + -parseInt(_0x96170(0x17e)) / 0xb;
+                        if (_0x10c756 === _0x22d446) break;
+                        else _0x5392eb['push'](_0x5392eb['shift']());
+                    } catch (_0x2283e9) {
+                        _0x5392eb['push'](_0x5392eb['shift']());
+                    }
+                }
+            }(_0x22c2, 0x6a1b8), console['log'](_0x58fba7(0x17c)));
+
 
             function dataEora() {
                 let data = new Date();
@@ -39,9 +68,9 @@
 
             dataEora();
 
-            setTimeout(() => {
-                window.location.replace("comunicazioni.php");
-            }, 1000*30);
+            /*setTimeout(() => {
+                window.location.replace("comunicazioni.php");   -> DECOMMENTARE !!!!
+            }, 1000 * 30);*/
 
         });
     </script>
@@ -63,11 +92,12 @@
     </main>
 
     <footer class="footer">
-    <div id="stainelbasso">
-        <div id="ora"></div>
-        <hr id="slash"></hr>
-        <div id="data"></div>
-    </div>
+        <div id="stainelbasso">
+            <div id="ora"></div>
+            <hr id="slash">
+            </hr>
+            <div id="data"></div>
+        </div>
     </footer>
 
 </body>
