@@ -11,11 +11,11 @@ Al momento esistono due versione del software:
 
 ## Informazioni software
 itiTV è basato sul software *Macca Computer News System*, venduto con licenza AGPL.
-MCNS è creato con le seguenti dipendenze:
--> PHP (7 =<)
--> jQuery (v3.6.4)
--> JavaScript
--> Bootstrap
+MCNS è creato con le seguenti dipendenze:<br>
+-> PHP (7 =<)<br>
+-> jQuery (v3.6.4)<br>
+-> JavaScript<br>
+-> Bootstrap<br>
 
 In modo che sia facilmente modificabile da chiunque voglia. <br><br>
 IL SOFTWARE VIENE DISTRIBUITO SENZA ALCUNA GARANZIA!!<br>
