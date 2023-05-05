@@ -71,14 +71,14 @@ if ($result->num_rows > 0) {
         $query = mysqli_query($con, "select tblposts.PostTitle as posttitle,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url,tblposts.postedBy,tblposts.lastUpdatedBy,tblposts.UpdationDate from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.id='$pid'");
         while ($row = mysqli_fetch_array($query)) {
         ?>
-          <div class="card mb-4">
+          <div class="card mb-4 bg-dark text-white">
 
             <div class="card-body">
               <h2 class="card-title"><?php echo htmlentities($row['posttitle']); ?></h2>
               <a class="badge bg-secondary text-decoration-none link-light" href="category.php?catid=<?php echo htmlentities($row['cid']) ?>" style="color:#fff"><?php echo htmlentities($row['category']); ?></a>
               <a class="badge bg-secondary text-decoration-none link-light" style="color:#fff"><?php echo htmlentities($row['subcategory']); ?></a>
               <p>
-                <b>Postato da </b> <?php echo htmlentities($row['postedBy']); ?> il </b><?php echo htmlentities($row['postingdate']); ?> |
+                <b>Postato da </b> <?php echo htmlentities($row['postedBy']); ?><b> il </b><?php echo htmlentities($row['postingdate']); ?><br>
                 <?php if ($row['lastUpdatedBy'] != '') : ?>
                   <b>Ultimo aggiornamento da </b> <?php echo htmlentities($row['lastUpdatedBy']); ?> il </b><?php echo htmlentities($row['UpdationDate']); ?>
               </p>
@@ -92,7 +92,7 @@ if ($result->num_rows > 0) {
 
             <img class="img-fluid rounded" src="admin/postimages/<?php echo htmlentities($row['PostImage']); ?>" alt="<?php echo htmlentities($row['posttitle']); ?>">
 
-            <p class="card-text"><?php
+            <p class="card-text text-white"><?php
                                   $pt = $row['postdetails'];
                                   echo (substr($pt, 0)); ?></p>
 
@@ -119,22 +119,22 @@ if ($result->num_rows > 0) {
 
     <div class="row" style="margin-top: -8%">
       <div class="col-md-8">
-        <div class="card my-4">
+        <div class="card my-4 bg-dark text-white">
           <h5 class="card-header">Commento:</h5>
           <div class="card-body">
             <form name="Comment" method="post">
               <input type="hidden" name="csrftoken" value="<?php echo htmlentities($_SESSION['token']); ?>">
               <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Nome" required>
+                <input type="text" name="name" class="form-control bg-dark text-white" placeholder="Nome" required>
               </div>
 
               <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email istituzionale" required>
+                <input type="email" name="email" class="form-control bg-dark text-white" placeholder="Email istituzionale" required>
               </div>
 
 
               <div class="form-group">
-                <textarea class="form-control" name="comment" rows="3" placeholder="Commenta" required></textarea>
+                <textarea class="form-control bg-dark text-white" name="comment" rows="3" placeholder="Commenta" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary" name="submit">Commenta</button>
             </form>
@@ -150,7 +150,7 @@ if ($result->num_rows > 0) {
         ?>
           <div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="images/usericon.png" alt="">
-            <div class="media-body">
+            <div class="media-body text-white">
               <h5 class="mt-0"><?php echo htmlentities($row['name']); ?> <br />
                 <span style="font-size:11px;"><b>il</b> <?php echo htmlentities($row['postingDate']); ?></span>
               </h5>
