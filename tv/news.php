@@ -85,11 +85,11 @@
                 }
 
                 if (isOpen) {
-                    document.getElementById("orario").innerHTML = "--APERTA--";
-                    document.getElementById("orario").style.color = "lime";
+                    document.getElementById("info").innerHTML = "--APERTA--";
+                    document.getElementById("info").style.color = "lime";
                 } else {
-                    document.getElementById("orario").innerHTML = "--CHIUSA--";
-                    document.getElementById("orario").style.color = "red";
+                    document.getElementById("info").innerHTML = "--CHIUSA--";
+                    document.getElementById("info").style.color = "red";
                 }
             }, 1000);
 
@@ -127,16 +127,16 @@
                             if (comunicazioni[i]) {
                                 $("#n_com").children().text(comunicazioni[i][0]);
                                 $("#titolo_com").children().text(comunicazioni[i][1]);
-                                $("#tcom").children().text(comunicazioni[i][2]);
+                                $("#tcom").children().html(comunicazioni[i][2]);
 
                                 if (!comunicazioni[i + 1]) {
                                     $("#n_com2").children().text(comunicazioni[0][0]);
                                     $("#titolo_com2").children().text(comunicazioni[0][1]);
-                                    $("#tcom2").children().text(comunicazioni[0][2]);
+                                    $("#tcom2").children().html(comunicazioni[0][2]);
                                 } else {
                                     $("#n_com2").children().text(comunicazioni[i + 1][0]);
                                     $("#titolo_com2").children().text(comunicazioni[i + 1][1]);
-                                    $("#tcom2").children().text(comunicazioni[i + 1][2]);
+                                    $("#tcom2").children().html(comunicazioni[i + 1][2]);
                                 }
 
 
@@ -271,7 +271,7 @@
                 <h4 id="orarioUno">Dalle 08:00 alle 09:00</h4>
                 <h4 id="orarioUno">Dalle 11:45 alle 13:45</h4>
                 <br><br>
-                <h4 id="orario"></h4>
+                <h4 id="info"></h4>
             </div>
         </div>
 

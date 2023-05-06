@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-
 body,
 html {
     margin-top: 0;
@@ -67,7 +65,7 @@ body {
     display: inline;
     color: #FF7746;
     font-size: 5.5em;
-    font-family: "Roboto";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     vertical-align: 120%;
@@ -104,7 +102,7 @@ body {
 
 #ora {
     font-size: 6em;
-    font-family: 'Roboto', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -115,7 +113,7 @@ body {
 
 #data {
     font-size: 5.5em;
-    font-family: 'Roboto', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     color: #E18476;
     text-align: center;
     font-weight: bold;
@@ -147,7 +145,7 @@ body {
 
 #infoSegreteria {
     font-size: 3.5em;
-    font-family: 'Roboto', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     color: #E18476;
     text-align: center;
     font-weight: bold;
@@ -157,7 +155,7 @@ body {
 
 #orarioUno {
     font-size: 3em;
-    font-family: 'Roboto', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -167,7 +165,7 @@ body {
 
 #info {
     font-size: 3.5em;
-    font-family: 'Roboto', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     text-align: center;
     font-weight: bold;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -220,7 +218,7 @@ body {
     color: white;
     font-size: 1.5em;
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #barra {
@@ -243,7 +241,7 @@ body {
     color: white;
     font-size: 1em;
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #tcom,
@@ -258,7 +256,7 @@ body {
     color: white;
     font-size: 1.7em;
     font-weight: bold;
-    font-family: 'Roboto';
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
@@ -296,7 +294,7 @@ body {
     display: inline;
     color: white;
     font-size: 4em;
-    font-family: "Roboto";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke-width: 2px;
@@ -311,7 +309,7 @@ body {
     color: white;
     display: inline;
     font-size: 5em;
-    font-family: "Roboto";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
 }
 
