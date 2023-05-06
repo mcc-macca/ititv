@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -9,38 +10,6 @@
     <script src="./assets/js/jquery.marquee.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#ora").text(new Date().toLocaleTimeString('it-IT', {
-                hour: "numeric",
-                minute: "numeric"
-            }));
-            $("#data").text(new Date().toLocaleDateString());
-            let actual = new Date();
-
-            let hours = actual.getHours();
-            let minutes = actual.getMinutes();
-
-            switch (hours) {
-                case 8:
-                    $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                    break;
-                case 11:
-                    if (minutes >= 45)
-                        $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                    else
-                        $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
-                    break;
-                case 12:
-                    $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                    break;
-                case 13:
-                    if (minutes <= 45)
-                        $("#info").html('<span style="color: #52B788;">--APERTO--</span>');
-                    else
-                        $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
-                    break;
-                default:
-                    $("#info").html('<span style="color: #CC0605;">--CHIUSO--</span>');
-            }
             setInterval(() => {
                 $("#ora").text(new Date().toLocaleTimeString('it-IT', {
                     hour: "numeric",
@@ -94,67 +63,30 @@
             }, 1000);
 
             function getCommm() {
-                $.get("assets/php/getComunicazioni.php")
-                    .done(function(risultati) {
-                        let dati;
+                $.getJSON("assets/php/getComunicazioni.php")
+                    .done(function(data) {
+                        var parsedData = JSON.parse(data);
+                        var lastTwo = parsedData.slice(Math.max(parsedData.length - 2, 0));
+                        $("#n_com").html("<h1>" + lastTwo[0].id + "</h1>");
+                        $("#titolo_com").html("<h1>" + lastTwo[0].PostTitle + "</h1>");
+                        $("#tcom").html("<p>" + lastTwo[0].PostDetails + "</p>");
 
-                        try {
-                            dati = JSON.parse(risultati);
-                        } catch (error) {
-                            dati = JSON.parse("[]");
-                        }
-
-                        let i = 0;
-                        let comunicazioni = dati.filter((comunicazione) => {
-                            if (comunicazione[3] != "News") {
-                                return comunicazione
-                            }
-                        });
-
-                        if (comunicazioni.length == 0) {
-                            $("#n_com").children().text('0');
-                            $("#titolo_com").children().text('Nessuna comunicazione');
-                            $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
-
-                            $("#n_com2").children().text('0');
-                            $("#titolo_com2").children().text('Nessuna comunicazione');
-                            $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
-
-                            return 0;
-                        }
-
-                        function communicazioni() {
-                            if (comunicazioni[i]) {
-                                $("#n_com").children().text(comunicazioni[i][0]);
-                                $("#titolo_com").children().text(comunicazioni[i][1]);
-                                $("#tcom").children().html(comunicazioni[i][2]);
-
-                                if (!comunicazioni[i + 1]) {
-                                    $("#n_com2").children().text(comunicazioni[0][0]);
-                                    $("#titolo_com2").children().text(comunicazioni[0][1]);
-                                    $("#tcom2").children().html(comunicazioni[0][2]);
-                                } else {
-                                    $("#n_com2").children().text(comunicazioni[i + 1][0]);
-                                    $("#titolo_com2").children().text(comunicazioni[i + 1][1]);
-                                    $("#tcom2").children().html(comunicazioni[i + 1][2]);
-                                }
-
-
-                                i++;
-                                if (i == comunicazioni.length - 1) {
-                                    i = 0;
-                                }
-                            }
-                        }
-
-                        communicazioni();
-                        setInterval(() => {
-                            communicazioni();
-                        }, 5 * 60 * 1000);
-
-
+                        $("#n_com2").html("<h1>" + lastTwo[1].id + "</h1>");
+                        $("#titolo_com2").html("<h1>" + lastTwo[1].PostTitle + "</h1>");
+                        $("#tcom2").html("<p>" + lastTwo[1].PostDetails + "</p>");
+                    })
+                    .fail(function(jqXHR, textStatus, errorThrown) {
+                        console.log("MACCA COMPUTER ERROR REPORT: " + errorThrown);
                     });
             }
+
+            getCommm();
+            setInterval(() => {
+                getCommm();
+            }, 30 * 60 * 1000);
+
+
+
 
             getCommm();
             setInterval(() => {
