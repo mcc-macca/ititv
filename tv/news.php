@@ -63,25 +63,25 @@
             }, 1000);
 
             function getCommm() {
-                $.getJSON("assets/php/getComunicazioni.php")
-                    .done(function(data) {
-                        var data;
-                        var parsedData = JSON.parse(data);
-                        var lastTwo = parsedData.slice(Math.max(parsedData.length - 2, 0));
-                        $("#n_com").html("<h1>" + lastTwo[0].id + "</h1>");
-                        $("#titolo_com").html("<h1>" + lastTwo[0].PostTitle + "</h1>");
-                        $("#tcom").html("<p>" + lastTwo[0].PostDetails + "</p>");
+                $.get("./assets/php/getComunicazioni.php")
+                    .done(function(comunicazioni) {
+                        let com;
 
-                        $("#n_com2").html("<h1>" + lastTwo[1].id + "</h1>");
-                        $("#titolo_com2").html("<h1>" + lastTwo[1].PostTitle + "</h1>");
-                        $("#tcom2").html("<p>" + lastTwo[1].PostDetails + "</p>");
+                        try {
+                            com = JSON.parse(comunicazioni);
+                        } catch (error) {
+                            com = JSON.parse("{}");
+                        }
+
+                        $("#n_com").html("<h1>" + com[0].id + "</h1>");
+                        $("#titolo_com").html("<h1>" + com[0].PostTitle + "</h1>");
+                        $("#tcom").html("<p>" + com[0].PostDetails + "</p>");
+
+                        $("#n_com2").html("<h1>" + com[1].id + "</h1>");
+                        $("#titolo_com2").html("<h1>" + com[1].PostTitle + "</h1>");
+                        $("#tcom2").html("<p>" + com[1].PostDetails + "</p>");
                     })
-                    .fail(function(xhr, textStatus, error) {
-                        console.log("%cMACCA %cCOMPUTER %cERROR %cREPORT:", 'color: #ff0000', 'color: #8242ff', 'color: lime', 'color: yellow');
-                        console.log("%cXHR:            ", 'color: lime', xhr.statusText);
-                        console.log("%cTEXT STATUS:    ", 'color: lime', textStatus);
-                        console.log("%cERROR:          ", 'color: #ff0000', error);
-                    });
+
             }
 
             getCommm();

@@ -26,6 +26,14 @@
                                         <li><a href="setup-mess.php">Messaggi</a></li>
                                     </ul>
                                 </li>
+                                <li class="has_sub">
+                                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i> <span> Gestione DATABASE </span> <span class="menu-arrow"></span></a>
+                                    <ul class="list-unstyled">
+                                        <li><a href="exe-query.php">Esegui query</a></li>
+                                        <li><a href="setup-dest.pphp">Destinatari</a></li>
+                                        <li><a href="setup-mess.php">Messaggi</a></li>
+                                    </ul>
+                                </li>
                             <?php endif; ?>
 
 
