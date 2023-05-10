@@ -1,3 +1,7 @@
+<?php 
+require '../lib/funtv.php';
+$data = leggiFileJson("./assets/php/getComunicazioni.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -212,10 +216,11 @@
         </div>
 
         <!-- DIV PRIMA COMUNICAZIONE -->
+        <?php ?>
         <div id="com1">
             <div id="header_com">
                 <span id="n_com">
-                    <h1>9999</h1>
+                    <h1><?= $data[0]['id']; ?></h1>
                 </span>
                 <hr id="barra">
                 <br>
