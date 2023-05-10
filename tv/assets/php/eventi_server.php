@@ -2,9 +2,9 @@
 
     function Connect(){
         $db_servername = "localhost";
-        $db_name = "ititv";
+        $db_name = "my_ititv";
         $db_username = "ititv";
-        $db_password = "ititv";
+        $db_password = "";
 
         $conn = new mysqli($db_servername, $db_username, $db_password, $db_name);
 
