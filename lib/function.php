@@ -1,11 +1,11 @@
 <?php
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 function mailCommenta($categoria, $name, $email, $comment)
 {
-  include('../includes/config.php');
+  require __DIR__ . '../../vendor/autoload.php';
   // set variabili SMTP
   //lettura dati da database
   $cattype = $con->real_escape_string($_GET['type']);
