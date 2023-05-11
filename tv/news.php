@@ -1,6 +1,5 @@
 <?php 
-require '../lib/funtv.php';
-$data = leggiFileJson("./assets/php/getComunicazioni.php");
+require '../lib/function.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +9,7 @@ $data = leggiFileJson("./assets/php/getComunicazioni.php");
     <!-- Favicon -->
     <link rel="stylesheet" href="./css/news.css">
     <link rel="shortcut icon" href="./assets/image/FaviconITITV.ico" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="./assets/js/jquery.marquee.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -67,24 +66,66 @@ $data = leggiFileJson("./assets/php/getComunicazioni.php");
             }, 1000);
 
             function getCommm() {
-                $.get("./assets/php/getComunicazioni.php")
-                    .done(function(comunicazioni) {
-                        let com;
+                $.get("assets/php/getComunicazioni.php")
+                .done(function(risultati) {
+                    let dati;
 
-                        try {
-                            com = JSON.parse(comunicazioni);
-                        } catch (error) {
-                            com = JSON.parse("{}");
+                    try {
+                        dati = JSON.parse(risultati);
+                    } catch (error) {
+                        dati = JSON.parse("[]");
+                    }
+
+                    let i = 0;
+                    let comunicazioni = dati.filter((comunicazione) => {
+                        if (comunicazione[3] != "News") {
+                            return comunicazione
                         }
+                    });
 
-                        $("#n_com").html("<h1>" + com[0].id + "</h1>");
-                        $("#titolo_com").html("<h1>" + com[0].PostTitle + "</h1>");
-                        $("#tcom").html("<p>" + com[0].PostDetails + "</p>");
+                    if(comunicazioni.length == 0){
+                        $("#n_com").children().text('0');
+                        $("#titolo_com").children().text('Nessuna comunicazione');
+                        $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
 
-                        $("#n_com2").html("<h1>" + com[1].id + "</h1>");
-                        $("#titolo_com2").html("<h1>" + com[1].PostTitle + "</h1>");
-                        $("#tcom2").html("<p>" + com[1].PostDetails + "</p>");
-                    })
+                        $("#n_com2").children().text('0');
+                        $("#titolo_com2").children().text('Nessuna comunicazione');
+                        $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
+
+                        return 0;
+                    }
+
+                    function communicazioni(){
+                        if (comunicazioni[i]) {
+                            $("#n_com").children().text(comunicazioni[i][0]);
+                            $("#titolo_com").children().text(comunicazioni[i][1]);
+                            $("#tcom").children().text(comunicazioni[i][2]);
+
+                            if(!comunicazioni[i + 1]){
+                                $("#n_com2").children().text(comunicazioni[0][0]);
+                                $("#titolo_com2").children().text(comunicazioni[0][1]);
+                                $("#tcom2").children().text(comunicazioni[0][2]);
+                            }else{
+                                $("#n_com2").children().text(comunicazioni[i + 1][0]);
+                                $("#titolo_com2").children().text(comunicazioni[i + 1][1]);
+                                $("#tcom2").children().text(comunicazioni[i + 1][2]);
+                            }
+                            
+
+                            i++;
+                            if (i == comunicazioni.length - 1) {
+                                i = 0;
+                            }
+                        }
+                    }
+
+                    communicazioni();
+                    setInterval(() => {
+                        communicazioni();
+                    }, 5*60*1000);
+
+
+                });
 
             }
 
@@ -220,7 +261,7 @@ $data = leggiFileJson("./assets/php/getComunicazioni.php");
         <div id="com1">
             <div id="header_com">
                 <span id="n_com">
-                    <h1><?= $data[0]['id']; ?></h1>
+                    <h1>999</h1>
                 </span>
                 <hr id="barra">
                 <br>

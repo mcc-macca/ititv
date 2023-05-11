@@ -1,11 +1,11 @@
 <?php
-require 'vendor/autoload.php';
+require __DIR__ . '../../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+//use PHPMailer\PHPMailer\Exception;
 
 function mailCommenta($categoria, $name, $email, $comment)
 {
-  require __DIR__ . '../../vendor/autoload.php';
+  require __DIR__ . '../../includes/config.php';
   // set variabili SMTP
   //lettura dati da database
   $cattype = $con->real_escape_string($_GET['type']);
@@ -62,4 +62,19 @@ function versionCheck(){
   $data = json_decode($fileContents, true);
   $versione = $data['mcns']['version'];
   return $versione;
+}
+
+/**
+ * @param mixed $file PARAMETRO FILE
+ * @return mixed
+ */
+function leggiFileJson($file){
+  $fileContents = file_get_contents($file);
+
+  $data = json_decode($fileContents, true);
+
+  if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+      throw new Exception('Errore nella lettura o nel parsing del file JSON: ' . json_last_error_msg());
+  }
+  return $data;
 }
