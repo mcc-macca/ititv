@@ -10,10 +10,15 @@ if (strlen($_SESSION['login']) == 0) {
         $catid = mysqli_real_escape_string($con, $_POST['category']);
         $subcatid = mysqli_real_escape_string($con, $_POST['subcategory']);
         $postdetails = mysqli_real_escape_string($con, $_POST['postdescription']);
+        $postdetailsalt = mysqli_real_escape_string($con, strip_tags($_POST['postdescription'], '<br>'));
         $postedby = $_SESSION['login'];
         $arr = explode(" ", $posttitle);
         $url = implode("-", $arr);
-        $imgfile = $_FILES["postimage"]["name"];
+        if (!isset($_FILES["postimage"])) {
+            $imgfile = "";
+        } else {
+            $imgfile = $_FILES["postimage"]["name"];
+        }
         // get the image extension
         $extension = strtolower(substr($imgfile, strlen($imgfile) - 4, strlen($imgfile)));
         // allowed extensions
@@ -28,7 +33,7 @@ if (strlen($_SESSION['login']) == 0) {
             move_uploaded_file($_FILES["postimage"]["tmp_name"], "postimages/" . $imgnewfile);
 
             $status = 1;
-            $query = mysqli_query($con, "insert into tblposts(PostTitle,CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage,postedBy) values('$posttitle','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile','$postedby')");
+            $query = mysqli_query($con, "insert into tblposts(PostTitle,CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage,postedBy, PostAltDet) values('$posttitle','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile','$postedby', '$postdetailsalt')");
             if ($query) {
                 $msg = "Notizia aggiunta con successo ";
             } else {
@@ -177,8 +182,8 @@ if (strlen($_SESSION['login']) == 0) {
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="card-box">
-                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Descrizione</b></h4>
-                                                        <textarea class="summernote" name="postdescription" required></textarea>
+                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Contenuto</b> <i>Nota bene: Nella visualizazzione TV, la formattazione non sarà visibile</i></h4>
+                                                        <textarea class="summernote" style="width: 100%; height: 200px" name="postdescription" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,8 +192,8 @@ if (strlen($_SESSION['login']) == 0) {
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="card-box">
-                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Immagine (obbligatoria) [.jpg .jpeg .png .gif]</b></h4>
-                                                        <input type="file" class="form-control" id="postimage" name="postimage" required>
+                                                        <h4 class="m-b-30 m-t-0 header-title"><b>Immagine (facoltativa) [.jpg .jpeg .png .gif]</b></h4>
+                                                        <input type="file" class="form-control" id="postimage" name="postimage"1>
                                                     </div>
                                                 </div>
                                             </div>

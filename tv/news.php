@@ -1,4 +1,4 @@
-<?php 
+<?php
 require '../lib/function.php';
 ?>
 <!DOCTYPE html>
@@ -66,66 +66,67 @@ require '../lib/function.php';
             }, 1000);
 
             function getCommm() {
-                $.get("assets/php/getComunicazioni.php")
-                .done(function(risultati) {
-                    let dati;
+                $.get("./assets/php/getComunicazioni.php")
+                    .done(function(risultati) {
+                        let dati;
 
-                    try {
-                        dati = JSON.parse(risultati);
-                    } catch (error) {
-                        dati = JSON.parse("[]");
-                    }
-
-                    let i = 0;
-                    let comunicazioni = dati.filter((comunicazione) => {
-                        if (comunicazione[3] != "News") {
-                            return comunicazione
+                        try {
+                            dati = JSON.parse(risultati);
+                        } catch (error) {
+                            dati = JSON.parse("[]");
                         }
+
+                        let i = 0;
+                        let comunicazioni = dati.filter((comunicazione) => {
+                            if (comunicazione[3] != "News") {
+                                return comunicazione
+                            }
+                        });
+
+                        if (comunicazioni.length == 0) {
+                            $("#n_com").children().text('0');
+                            $("#titolo_com").children().text('Nessuna comunicazione');
+                            $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
+
+                            $("#n_com2").children().text('0');
+                            $("#titolo_com2").children().text('Nessuna comunicazione');
+                            $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
+
+                            return 0;
+                        }
+
+                        function communicazioni() {
+                            if (comunicazioni[i]) {
+                                $("#n_com").children().html(comunicazioni[i][0]);
+                                $("#titolo_com").children().html(comunicazioni[i][1]);
+                                $("#tcom").children().html(comunicazioni[i][2]);
+
+                                if (!comunicazioni[i + 1]) {
+                                    $("#n_com2").children().html(comunicazioni[0][0]);
+                                    $("#titolo_com2").children().html(comunicazioni[0][1]);
+                                    $("#tcom2").children().html(comunicazioni[0][2]);
+                                } else {
+                                    $("#n_com2").children().html(comunicazioni[i + 1][0]);
+                                    $("#titolo_com2").children().html(comunicazioni[i + 1][1]);
+                                    $("#tcom2").children().html(comunicazioni[i + 1][2]);
+                                }
+
+
+                                i++;
+                                if (i == comunicazioni.length - 1) {
+                                    i = 0;
+                                }
+                            }
+                        }
+
+                        communicazioni();
+                        setInterval(() => {
+                            communicazioni();
+                        }, 5 * 60 * 1000);
+
+
                     });
 
-                    if(comunicazioni.length == 0){
-                        $("#n_com").children().text('0');
-                        $("#titolo_com").children().text('Nessuna comunicazione');
-                        $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
-
-                        $("#n_com2").children().text('0');
-                        $("#titolo_com2").children().text('Nessuna comunicazione');
-                        $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
-
-                        return 0;
-                    }
-
-                    function communicazioni(){
-                        if (comunicazioni[i]) {
-                            $("#n_com").children().text(comunicazioni[i][0]);
-                            $("#titolo_com").children().text(comunicazioni[i][1]);
-                            $("#tcom").children().text(comunicazioni[i][2]);
-
-                            if(!comunicazioni[i + 1]){
-                                $("#n_com2").children().text(comunicazioni[0][0]);
-                                $("#titolo_com2").children().text(comunicazioni[0][1]);
-                                $("#tcom2").children().text(comunicazioni[0][2]);
-                            }else{
-                                $("#n_com2").children().text(comunicazioni[i + 1][0]);
-                                $("#titolo_com2").children().text(comunicazioni[i + 1][1]);
-                                $("#tcom2").children().text(comunicazioni[i + 1][2]);
-                            }
-                            
-
-                            i++;
-                            if (i == comunicazioni.length - 1) {
-                                i = 0;
-                            }
-                        }
-                    }
-
-                    communicazioni();
-                    setInterval(() => {
-                        communicazioni();
-                    }, 5*60*1000);
-
-
-                });
 
             }
 

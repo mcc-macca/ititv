@@ -1,11 +1,11 @@
 <?php
     require '../../../includes/config.php';
-    $result = $con->query("SELECT `id`, `PostTitle`, `PostDetails` FROM `tblposts` ORDER BY `id` DESC");
-    $jsonArray = array();
-    while ($row = $result->fetch_assoc()) {
-        $row['PostDetails'] = strip_tags($row['PostDetails'], '<br>');
-        $jsonArray[] = $row;
+    $result = $con->query("SELECT `id`,`Posttitle`,`PostAltDet` FROM `tblposts` ORDER BY `id` DESC");
+            
+    if ($result->num_rows > 0) {
+        echo json_encode($result->fetch_all());
     }
-    header('Content-Type: application/json');
-    echo json_encode($jsonArray);
+    else{
+        echo json_encode(array());
+    }
     $con->close();
