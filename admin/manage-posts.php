@@ -16,6 +16,13 @@ if (strlen($_SESSION['login']) == 0) {
         }
     }
 
+    if (isset($_GET['dlid'])) {
+        $dlid = intval($_GET['dlid'], 10);
+        if ($con->query("UPDATE tblnews SET isActive = 0 WHERE id = $dlid")) {
+            header("location: manage-posts.php");
+        }
+    }
+
     if (isset($_POST['livenewssubmit'])) {
         $id = intval($_POST['idlive'], 10);
         $livenewstext = mysqli_real_escape_string($con, $_POST['newtestolive']);
@@ -127,7 +134,7 @@ if (strlen($_SESSION['login']) == 0) {
                                             <tbody>
 
                                                 <?php
-                                                $query = mysqli_query($con, "SELECT * FROM tblnews WHERE isActive = 1");
+                                                $query = mysqli_query($con, "SELECT * FROM tblnews WHERE isActive = 1 ORDER BY id DESC");
                                                 $rowcount = mysqli_num_rows($query);
                                                 if ($rowcount == 0) {
                                                 ?>
@@ -164,7 +171,7 @@ if (strlen($_SESSION['login']) == 0) {
                                                                 <i class="fa fa-pencil" style="color: #29b6f6;"></i>
                                                             </a>
                                                             &nbsp;
-                                                            <a href="manage-posts.php?pid=<?php echo htmlentities($row['id']); ?>&action=livedel" onclick="return confirm('Do you reaaly want to delete ?')">
+                                                            <a href="manage-posts.php?dlid=<?php echo htmlentities($row['id']); ?>" onclick="return confirm('Do you reaaly want to delete ?')">
                                                                 <i class="fa fa-trash-o" style="color: #f05050"></i>
                                                             </a>
                                                         </td>

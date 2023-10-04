@@ -17,11 +17,17 @@ if (strlen($_SESSION['login']) == 0) {
     }
 
 
-    // Code for Forever deletionparmdel
     if ($_GET['presid']) {
         $id = intval($_GET['presid']);
         $query = mysqli_query($con, "delete from  tblposts  where id='$id'");
         $delmsg = "Post cancellato permanentemente";
+    }
+
+    if (isset($_GET['rlnid'])) {
+        $rlnid = intval($_GET['rlnid'], 10);
+        if ($con->query("UPDATE tblnews SET isActive = 1 WHERE id = $rlnid")) {
+            header("location: trash-posts.php");
+        }
     }
 
 ?>
@@ -128,7 +134,7 @@ if (strlen($_SESSION['login']) == 0) {
                                 <div class="col-sm-12">
                                     <div class="card-box">
 
-
+                                    <h1>Notizie</h1>
                                         <div class="table-responsive">
                                             <table class="table table-colored table-centered table-inverse m-0">
                                                 <thead>
@@ -150,7 +156,7 @@ if (strlen($_SESSION['login']) == 0) {
                                                         <tr>
 
                                                             <td colspan="4" align="center">
-                                                                <h3 style="color:red">No record found</h3>
+                                                                <h3 style="color:red">Nessuna notizia cancellata</h3>
                                                             </td>
                                                         <tr>
                                                             <?php
@@ -166,6 +172,47 @@ if (strlen($_SESSION['login']) == 0) {
                                                                 <a href="trash-posts.php?pid=<?php echo htmlentities($row['postid']); ?>&&action=restore" onclick="return confirm('Do you really want to restore ?')"> <i class="ion-arrow-return-right" title="Restore this Post"></i></a>
                                                                 &nbsp;
                                                                 <a href="trash-posts.php?presid=<?php echo htmlentities($row['postid']); ?>&&action=perdel" onclick="return confirm('Do you really want to delete ?')"><i class="fa fa-trash-o" style="color: #f05050" title="Permanently delete this post"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                <?php }
+                                                        } ?>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    <h1>Live News</h1>
+                                    <div class="table-responsive">
+                                            <table class="table table-colored table-centered table-inverse m-0">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Contenuto</th>
+                                                        <th>Azioni</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    <?php
+                                                    $query = mysqli_query($con, "SELECT * FROM tblnews WHERE isActive = 0");
+                                                    $rowcount = mysqli_num_rows($query);
+                                                    if ($rowcount == 0) {
+                                                    ?>
+                                                        <tr>
+
+                                                            <td colspan="4" align="center">
+                                                                <h3 style="color:red">Nessuna live news cancellata</h3>
+                                                            </td>
+                                                        <tr>
+                                                            <?php
+                                                        } else {
+                                                            while ($row = mysqli_fetch_array($query)) {
+                                                            ?>
+                                                        <tr>
+                                                            <td><b><?php echo htmlentities($row['newsDetails']); ?></b></td>
+                                                            
+
+                                                            <td>
+                                                                <a href="trash-posts.php?rlnid=<?php echo htmlentities($row['id']); ?>" onclick="return confirm('Vuoi ripristinare questa live news?')"> <i class="ion-arrow-return-right" title="Restore this Post"></i></a>
                                                             </td>
                                                         </tr>
                                                 <?php }

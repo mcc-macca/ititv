@@ -4,7 +4,7 @@ require '../includes/config.php';
 
 header("Content-type: application/json; charset=utf-8");
 
-$getcommquery = "SELECT id, PostTitle, PostDetails, PostAltDet FROM tblposts ORDER BY id DESC LIMIT 2";
+$getcommquery = "SELECT id, PostTitle, PostDetails, PostAltDet FROM tblposts ORDER BY id DESC LIMIT 3";
 
 $result = $con->query($getcommquery);
 
