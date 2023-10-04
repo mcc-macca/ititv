@@ -15,6 +15,14 @@ if (strlen($_SESSION['login']) == 0) {
             $error = "Something went wrong . Please try again.";
         }
     }
+
+    if (isset($_POST['livenewssubmit'])) {
+        $id = intval($_POST['idlive'], 10);
+        $livenewstext = mysqli_real_escape_string($con, $_POST['newtestolive']);
+        if ($con->query("UPDATE tblnews SET newsDetails = '$livenewstext' WHERE id = $id;")) {
+            header("location: manage-posts.php");
+        }
+    }
 ?>
 
     <!DOCTYPE html>
@@ -108,7 +116,65 @@ if (strlen($_SESSION['login']) == 0) {
                             <div class="col-sm-12">
                                 <div class="card-box">
 
+                                    <div class="table-responsive">
+                                        <table class="table table-colored table-centered table-inverse m-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Contenuto</th>
+                                                    <th>Azioni</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
+                                                <?php
+                                                $query = mysqli_query($con, "SELECT * FROM tblnews WHERE isActive = 1");
+                                                $rowcount = mysqli_num_rows($query);
+                                                if ($rowcount == 0) {
+                                                ?>
+                                                    <tr>
+
+                                                        <td colspan="4" align="center">
+                                                            <h3 style="color:red">Nessuna notizia live da mostrare</h3>
+                                                        </td>
+                                                    <tr>
+                                                        <?php
+                                                    } else {
+                                                        while ($row = mysqli_fetch_array($query)) {
+                                                            if (isset($_GET['lnid']) && $_GET['lnid'] == $row['id']) {
+                                                                print "
+                                                                    <form action='manage-posts.php' method='post'>
+                                                                        <td>
+                                                                            <input type='hidden' name='idlive' value='" . $row['id'] . "'>
+                                                                            <input type='text' class='form-control' value='" . htmlentities($row['newsDetails']) . "' name='newtestolive'>
+                                                                        </td>
+                                                                        <td>
+                                                                            <button type='submit' name='livenewssubmit'>
+                                                                                <i class='fa fa-check' style='color: #29b6f6;'></i>
+                                                                            </button>
+                                                                        </td>
+                                                                    </form>
+                                                                ";
+                                                            } else {
+                                                        ?>
+                                                    <tr>
+                                                        <td><b><?php echo htmlentities($row['newsDetails']); ?></b></td>
+
+                                                        <td>
+                                                            <a href="manage-posts.php?lnid=<?= htmlentities($row['id']) ?>">
+                                                                <i class="fa fa-pencil" style="color: #29b6f6;"></i>
+                                                            </a>
+                                                            &nbsp;
+                                                            <a href="manage-posts.php?pid=<?php echo htmlentities($row['id']); ?>&action=livedel" onclick="return confirm('Do you reaaly want to delete ?')">
+                                                                <i class="fa fa-trash-o" style="color: #f05050"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                            <?php }}
+                                                    } ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                     <div class="table-responsive">
                                         <table class="table table-colored table-centered table-inverse m-0">
                                             <thead>

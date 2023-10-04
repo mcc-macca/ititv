@@ -57,6 +57,7 @@
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i> <span> Notizie </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="add-post.php">Aggiungi notizia</a></li>
+                                    <li><a href="add-live.php">Aggiungi live news</a></li>
                                     <li><a href="manage-posts.php">Gestisci notizie</a></li>
                                     <li><a href="trash-posts.php">Notizie cancellate</a></li>
                                 </ul>
