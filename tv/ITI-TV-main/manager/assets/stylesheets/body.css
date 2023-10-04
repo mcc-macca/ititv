@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+/* Modifica la selezione del testo */
+
+::selection {
+    background: white;
+    /* background della selezione */
+    color: #102C54;
+    /* colore del testo della selezione */
+}
+
+
+/* Modifica la selezione del testo */
+
+::-moz-selection {
+    background: white;
+    /* background della selezione */
+    color: #102C54;
+    /* colore del testo della selezione */
+}
+
+body { /* struttura dell'interfaccia */
+    background: #04326F; /* colore sfondo */
+    color: white; /* colore testo */
+    font-family: 'Roboto', sans-serif; /* font testo */
+}

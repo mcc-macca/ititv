@@ -65,156 +65,18 @@ require '../lib/function.php';
                 }
             }, 1000);
 
-            function getCommm() {
-                $.get("./assets/php/getComunicazioni.php")
-                    .done(function(risultati) {
-                        let dati;
+            $(document).ready(function() {
+                // dichiarazione dei var
+                var idfirst = document.getElementById("n_com");
+                var titolofirst = document.getElementById("titolo_com");
+                var contenutofirst = document.getElementById("tcom");
 
-                        try {
-                            dati = JSON.parse(risultati);
-                        } catch (error) {
-                            dati = JSON.parse("[]");
-                        }
+                var idsecond = document.getElementById("n_com2");
+                var titolosecond = document.getElementById("titolo_com2");
+                var contenutosecond = document.getElementById("tcom2");
 
-                        let i = 0;
-                        let comunicazioni = dati.filter((comunicazione) => {
-                            if (comunicazione[3] != "News") {
-                                return comunicazione
-                            }
-                        });
-
-                        if (comunicazioni.length == 0) {
-                            $("#n_com").children().text('0');
-                            $("#titolo_com").children().text('Nessuna comunicazione');
-                            $("#tcom").children().text('Non sono presenti comunicazioni in archivio');
-
-                            $("#n_com2").children().text('0');
-                            $("#titolo_com2").children().text('Nessuna comunicazione');
-                            $("#tcom2").children().text('Non sono presenti comunicazioni in archivio');
-
-                            return 0;
-                        }
-
-                        function communicazioni() {
-                            if (comunicazioni[i]) {
-                                $("#n_com").children().html(comunicazioni[i][0]);
-                                $("#titolo_com").children().html(comunicazioni[i][1]);
-                                $("#tcom").children().html(comunicazioni[i][2]);
-
-                                if (!comunicazioni[i + 1]) {
-                                    $("#n_com2").children().html(comunicazioni[0][0]);
-                                    $("#titolo_com2").children().html(comunicazioni[0][1]);
-                                    $("#tcom2").children().html(comunicazioni[0][2]);
-                                } else {
-                                    $("#n_com2").children().html(comunicazioni[i + 1][0]);
-                                    $("#titolo_com2").children().html(comunicazioni[i + 1][1]);
-                                    $("#tcom2").children().html(comunicazioni[i + 1][2]);
-                                }
-
-
-                                i++;
-                                if (i == comunicazioni.length - 1) {
-                                    i = 0;
-                                }
-                            }
-                        }
-
-                        communicazioni();
-                        setInterval(() => {
-                            communicazioni();
-                        }, 5 * 60 * 1000);
-
-
-                    });
-
-
-            }
-
-            getCommm();
-            setInterval(() => {
-                getCommm();
-            }, 30 * 60 * 1000);
-
-
-
-
-            getCommm();
-            setInterval(() => {
-                getCommm();
-            }, 30 * 60 * 1000);
-
-
-            function getEventtt() {
-                $.get("assets/php/getEventiAggiuntivi.php")
-                    .done(function(risultati) {
-                        let dati;
-
-                        try {
-                            dati = JSON.parse(risultati);
-                        } catch (error) {
-                            dati = JSON.parse("[]");
-                        }
-
-
-                        let j = 0;
-
-                        let news = dati.filter((comunicazione) => {
-                            if (comunicazione[3] == "News") {
-                                return comunicazione;
-                            }
-                        });
-
-                        if (news.length == 0) {
-                            $("#notizia").children().text("NESSUNA LIVE NEWS DA MOSTRARE!");
-                            $("#notizia").marquee({
-                                delayBeforeStart: 10,
-                                allowCss3Support: true,
-                                duplicated: true,
-                                pauseOnCycle: false,
-                                pauseOnHover: false,
-                                startVisible: true,
-                                gap: 1500
-                            });
-                            return 0;
-                        }
-
-                        var lastmarquee = $("#notizia").marquee();
-
-                        function newscgange() {
-                            lastmarquee.marquee('destroy');
-                            if (news[j]) {
-                                $("#notizia").children().text(news[j][2])
-                                j++;
-                                if (j == news.length) {
-                                    j = 0;
-                                }
-                                $("#notizia").marquee({
-                                    delayBeforeStart: 10,
-                                    allowCss3Support: true,
-                                    duplicated: true,
-                                    pauseOnCycle: false,
-                                    pauseOnHover: false,
-                                    startVisible: true,
-                                    gap: 1500
-                                });
-                            }
-                        }
-
-                        newscgange();
-                        setInterval(() => {
-                            newscgange();
-                        }, 30 * 1000);
-
-                    });
-            }
-
-            getEventtt();
-            setInterval(() => {
-                getEventtt();
-            }, 5 * 60 * 1000);
-
-
-
+                var livenews = document.getElementById("notizia");
+            })
 
             /*setTimeout(() => {
                 window.location.replace("tmpvideo.php");
@@ -267,11 +129,11 @@ require '../lib/function.php';
                 <hr id="barra">
                 <br>
                 <span id="titolo_com">
-                    <h1>COMUNICAZIONE 1</h1>
+                    <h1>Ultima Comunicazione</h1>
                 </span>
                 <br>
                 <span id="tcom">
-                    <p>asiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB UOEASVBUOufabseuoiafbaew ufbewufbweubasiysdbaoWUIYHD FBUOIASHFBCUASEGVBFUIWEGVFB</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit non ullam minima hic, iusto quaerat harum voluptates aut laudantium maiores voluptatem exercitationem voluptatibus ipsa veniam enim. Explicabo laborum eum et!</p>
                 </span>
             </div>
         </div>
@@ -285,11 +147,11 @@ require '../lib/function.php';
                 <hr id="barra">
                 <br>
                 <span id="titolo_com2">
-                    <h1>COMUNICAZIONE 2</h1>
+                    <h1>PenUltima Comunicazione</h1>
                 </span>
                 <br>
                 <span id="tcom2">
-                    <p>asiysdbaoWUIYHDFBUOIA SHFBCUASEGVBFUIWEGVFBUOEASVBUO ufabseuoiafbaewufbewufbweub</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit non ullam minima hic, iusto quaerat harum voluptates aut laudantium maiores voluptatem exercitationem voluptatibus ipsa veniam enim. Explicabo laborum eum et!</p>
                 </span>
             </div>
         </div>
@@ -305,7 +167,7 @@ require '../lib/function.php';
         <hr id="sep_footer">
         <div class="scroll-left">
             <h1 id="notizia">
-                <nobr>ABCDEFGHIJKLMNOPQRSTUVWXYZ</nobr>
+                <nobr>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit non ullam minima hic, iusto quaerat harum voluptates aut laudantium maiores voluptatem exercitationem voluptatibus ipsa veniam enim. Explicabo laborum eum et!</nobr>
             </h1>
         </div>
     </footer>

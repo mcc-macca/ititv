@@ -1,0 +1,62 @@
+/*header*/
+header{
+    position: absolute;
+    width: 1920px;
+    height: 165px;
+    background: #004996;
+    filter: drop-shadow(0px 20px 60px rgba(0, 0, 0, 0.20));
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+}
+#logoititv{
+    width: 280.855px;
+    height: 146px;
+    position: absolute;
+    top: 12px;
+    left: 1633px;
+}
+#logoiti{
+    width: 186px;
+    height: 146px;
+    position: absolute;
+    top: 9px;
+    left: 31px;
+}
+/*footer*/
+footer{
+    width: 1920px;
+    height: 158px;
+    position: absolute;
+    top: 922px;
+    background: #004996;
+    z-index: 3;
+}
+#news{
+    display: flex;
+    width: 1559px;
+    height: 126px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 0px 30px #6BB3FF;
+    font-family: Inter;
+    font-size: 53px;
+    font-style: normal;
+    font-weight: 735;
+    line-height: normal;
+    position: absolute;
+    top: 16px;
+    left: 344px;
+}
+#quad-rosso{
+    width: 326px;
+    height: 158px;
+    flex-shrink: 0;
+    border: 1.5px solid #CDCDCD;
+    background: #FF1B1B;
+    position: absolute;
+    left: -2px;
+}
