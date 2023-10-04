@@ -12,6 +12,8 @@ require '../lib/function.php';
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script src="./assets/js/jquery.marquee.min.js"></script>
     <script>
+        console.log("ITITV - Versione Frontend 4X, Backend Macca Computer");
+
         $(document).ready(function() {
             setInterval(() => {
                 $("#ora").text(new Date().toLocaleTimeString('it-IT', {
@@ -76,7 +78,68 @@ require '../lib/function.php';
                 var contenutosecond = document.getElementById("tcom2");
 
                 var livenews = document.getElementById("notizia");
-            })
+
+                $.ajax({
+                    type: "GET",
+                    url: "xnews.php",
+                    dataType: "json",
+                    success: function(data) {
+                        if (data[0]) {
+                            idfirst.textContent = data[0].id || "001";
+                            titolofirst.textContent = data[0].PostTitle || "Ultima notizia";
+                            contenutofirst.textContent = data[0].PostDetails || "Dettagli ultima notizia";
+                        } else {
+                            idfirst.textContent = "001";
+                            titolofirst.textContent = "Ultima notizia";
+                            contenutofirst.textContent = "Dettagli ultima notizia";
+                        }
+
+                        if (data[1]) {
+                            idsecond.textContent = data[1].id || "002";
+                            titolosecond.textContent = data[1].PostTitle || "Penultima notizia";
+                            contenutosecond.textContent = data[1].PostDetails || "Dettagli penultima notizia";
+                        } else {
+                            idsecond.textContent = "002";
+                            titolosecond.textContent = "Penultima notizia";
+                            contenutosecond.textContent = "Dettagli penultima notizia";
+                        }
+                    },
+                    error: function(error, xhr) {
+                        console.log("%cErrore: %c " + error, "color: red", "color: white");
+                    }
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: "xlive.php",
+                    dataType: "json",
+                    success: function(data) {
+                        if (data[0]) {
+                            livenews.textContent = data[0].newsDetails || "Nessuna livenews da mostrare";
+                            $("#notizia").marquee({
+                                delayBeforeStart: 10,
+                                allowCss3Support: true,
+                                duplicated: true,
+                                pauseOnCycle: false,
+                                pauseOnHover: false,
+                                startVisible: true,
+                                gap: 1500
+                            });
+                        } else {
+                            livenews.textContent = "Nessuna live news da mostrare";
+                            $("#notizia").marquee({
+                                    delayBeforeStart: 10,
+                                    allowCss3Support: true,
+                                    duplicated: true,
+                                    pauseOnCycle: false,
+                                    pauseOnHover: false,
+                                    startVisible: true,
+                                    gap: 1500
+                                });
+                        }
+                    }
+                })
+            });
 
             /*setTimeout(() => {
                 window.location.replace("tmpvideo.php");
