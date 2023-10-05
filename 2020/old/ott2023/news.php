@@ -1,5 +1,5 @@
 <?php
-require '../lib/function.php';
+//require '../lib/function.php';
 ?>
 <!DOCTYPE html>
 <html>

@@ -50,92 +50,98 @@ $(document).ready(function () {
 
   var defaultDetails = "Nessun Contenuto da mostrare";
 
-  $.ajax({
-    type: "GET",
-    url: "xnews.php",
-    dataType: "json",
-    success: function (data) {
-      if (data[0]) {
-        idfirst.textContent = data[0].id || "001";
-        titolofirst.textContent = data[0].PostTitle || "Ultima notizia";
-        contenutofirst.innerHTML = data[0].PostDetails || defaultDetails;
-      } else {
-        idfirst.textContent = "001";
-        titolofirst.textContent = "Ultima notizia";
-        contenutofirst.textContent = defaultDetails;
-      }
+  function aggiornaNews() {
+    $.ajax({
+      type: "GET",
+      url: "xnews.php",
+      dataType: "json",
+      success: function (data) {
+        if (data[0]) {
+          idfirst.textContent = data[0].id || "001";
+          titolofirst.textContent = data[0].PostTitle || "Ultima notizia";
+          contenutofirst.innerHTML = data[0].PostDetails || defaultDetails;
+          console.log(data[0].id + "\n" + data[0].PostTitle + "\n" + data[0].PostDetails);
+        } else {
+          idfirst.textContent = "001";
+          titolofirst.textContent = "Ultima notizia";
+          contenutofirst.textContent = defaultDetails;
+        }
 
-      if (data[1]) {
-        idsecond.textContent = data[1].id || "002";
-        titolosecond.textContent = data[1].PostTitle || "Penultima notizia";
-        contenutosecond.innerHTML = data[1].PostDetails || defaultDetails;
-      } else {
-        idsecond.textContent = "002";
-        titolosecond.textContent = "Penultima notizia";
-        contenutosecond.textContent = defaultDetails;
-      }
+        if (data[1]) {
+          idsecond.textContent = data[1].id || "002";
+          titolosecond.textContent = data[1].PostTitle || "Penultima notizia";
+          contenutosecond.innerHTML = data[1].PostDetails || defaultDetails;
+        } else {
+          idsecond.textContent = "002";
+          titolosecond.textContent = "Penultima notizia";
+          contenutosecond.textContent = defaultDetails;
+        }
 
-      if (data[2]) {
-        idthird.textContent = data[2].id || "003";
-        titolothird.textContent = data[2].PostTitle || "Terzultima notizia";
-        contenutothird.innerHTML = data[2].PostDetails || defaultDetails;
-      } else {
-        idthird.textContent = "003";
-        titolothird.textContent = "Terzultima notizia";
-        contenutothird.textContent = defaultDetails;
-      }
-    },
-    error: function (error, xhr) {
-      console.log("%cErrore: %c " + error, "color: red", "color: white");
-    },
-  });
+        if (data[2]) {
+          idthird.textContent = data[2].id || "003";
+          titolothird.textContent = data[2].PostTitle || "Terzultima notizia";
+          contenutothird.innerHTML = data[2].PostDetails || defaultDetails;
+        } else {
+          idthird.textContent = "003";
+          titolothird.textContent = "Terzultima notizia";
+          contenutothird.textContent = defaultDetails;
+        }
+      },
+      error: function (error, xhr) {
+        console.log("%cErrore: %c " + error, "color: red", "color: white");
+      },
+    });
+  }
 
   var livenews = document.getElementById("news");
 
   var ultimoTesto = "";
 
-                function aggiornaLiveNews() {
-                    $.ajax({
-                        type: "GET",
-                        url: "xlive.php",
-                        dataType: "json",
-                        success: function(data) {
-                            if (data[0]) {
-                                var nuovoTesto = data[0].newsDetails || "Nessuna livenews da mostrare";
+  function aggiornaLiveNews() {
+    $.ajax({
+      type: "GET",
+      url: "xlive.php",
+      dataType: "json",
+      success: function (data) {
+        if (data[0]) {
+          var nuovoTesto =
+            data[0].newsDetails || "Nessuna livenews da mostrare";
 
-                                if (nuovoTesto !== ultimoTesto) {
-                                    livenews.textContent = nuovoTesto;
-                                    $("#news").marquee({
-                                        delayBeforeStart: 10,
-                                        allowCss3Support: true,
-                                        duplicated: true,
-                                        pauseOnCycle: false,
-                                        pauseOnHover: false,
-                                        startVisible: true,
-                                        gap: 1500
-                                    });
+          if (nuovoTesto !== ultimoTesto) {
+            livenews.textContent = nuovoTesto;
+            $("#news").marquee({
+              delayBeforeStart: 10,
+              allowCss3Support: true,
+              duplicated: true,
+              pauseOnCycle: false,
+              pauseOnHover: false,
+              startVisible: true,
+              gap: 1500,
+            });
 
-                                    ultimoTesto = nuovoTesto;
-                                }
-                            } else {
-                                livenews.textContent = "Nessuna live news da mostrare";
-                                $("#news").marquee({
-                                    delayBeforeStart: 10,
-                                    allowCss3Support: true,
-                                    duplicated: true,
-                                    pauseOnCycle: false,
-                                    pauseOnHover: false,
-                                    startVisible: true,
-                                    gap: 1500
-                                });
-                            }
-                        }
-                    });
-                }
+            ultimoTesto = nuovoTesto;
+          }
+        } else {
+          livenews.textContent = "Nessuna live news da mostrare";
+          $("#news").marquee({
+            delayBeforeStart: 10,
+            allowCss3Support: true,
+            duplicated: true,
+            pauseOnCycle: false,
+            pauseOnHover: false,
+            startVisible: true,
+            gap: 1500,
+          });
+        }
+      },
+    });
+  }
 
-                // Esegui l'aggiornamento subito all'apertura della pagina
-                aggiornaLiveNews();
+  aggiornaLiveNews();
 
-                // Esegui l'aggiornamento ogni secondo (1000 millisecondi)
-                setInterval(aggiornaLiveNews, 1000);
+  setInterval(aggiornaLiveNews, 1000);
+
+  aggiornaNews();
+
+  setInterval(aggiornaNews, 1000);
 });

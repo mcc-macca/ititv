@@ -32,6 +32,7 @@
                                         <li><a href="exe-query.php">Esegui query</a></li>
                                         <li><a href="setup-dest.pphp">Destinatari</a></li>
                                         <li><a href="setup-mess.php">Messaggi</a></li>
+                                        <li><a href="manage-orari.php">Gestione orari</a></li>
                                     </ul>
                                 </li>
                             <?php endif; ?>

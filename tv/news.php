@@ -176,17 +176,10 @@
             left: 46px;
         }
 
-        #news {
-            position: relative;
-            float: left;
-            width: 87.7%;
-            color: white;
-            display: inline;
-            font-weight: bold;
-        }
     </style>
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/news.js"></script>
+    <script src="./assets/js/jquery.marquee.min.js"></script>
 </head>
 
 <body>
@@ -224,8 +217,8 @@
     </main>
     <!--FOOTER-->
     <footer>
-        <div id="quad-rosso"></div>
-        <div id="test-rosso">LIVE NEWS</div>
+        <div id="quad-rosso" style="z-index: 1"></div>
+        <div id="test-rosso" style="z-index: 1">LIVE NEWS</div>
         <div id="news">----- LIVE NEWS -- LIVE NEWS -- LIVE NEWS-----</div>
     </footer>
 </body>
